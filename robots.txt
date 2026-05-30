@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gabrielamunizfull.github.io/muniz-dev-landing-page/sitemap.xml
