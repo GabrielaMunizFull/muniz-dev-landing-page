@@ -771,28 +771,28 @@
         <a href="https://www.linkedin.com/in/gabriela-muniz-1ab02a1ab" class="contact-link">
           <span>💼</span> linkedin.com/in/gabriela-muniz-1ab02a1ab
         </a>
-        <a href="#" class="contact-link">
-          <span>🐙</span> github.com/gabriela-dev
+        <a href="https://github.com/GabrielaMunizFull" class="contact-link" target="_blank" rel="noopener">
+          <span>🐙</span> github.com/GabrielaMunizFull
         </a>
-        <a href="https://wa.me/5511999999999" class="contact-link">
+        <a href="https://wa.me/558194561507" class="contact-link" target="_blank" rel="noopener">
           <span>💬</span> WhatsApp
         </a>
       </div>
     </div>
-    <form class="reveal" onsubmit="handleSubmit(event)">
+    <form class="reveal" id="contactForm">
       <div class="form-row">
         <div class="field">
           <label>Nome</label>
-          <input type="text" placeholder="Seu nome" required>
+          <input type="text" name="nome" placeholder="Seu nome" required>
         </div>
         <div class="field">
           <label>E-mail</label>
-          <input type="email" placeholder="seu@email.com" required>
+          <input type="email" name="email" placeholder="seu@email.com" required>
         </div>
       </div>
       <div class="field">
         <label>Tipo de projeto</label>
-        <select>
+        <select name="tipo_projeto">
           <option value="">Selecione...</option>
           <option>Site / Landing Page</option>
           <option>Sistema Web</option>
@@ -805,7 +805,7 @@
       </div>
       <div class="field">
         <label>Mensagem</label>
-        <textarea placeholder="Descreva seu projeto, prazo e orçamento estimado..."></textarea>
+        <textarea name="mensagem" placeholder="Descreva seu projeto, prazo e orçamento estimado..."></textarea>
       </div>
       <button type="submit" class="btn-submit" id="submitBtn">Enviar mensagem →</button>
     </form>
@@ -831,20 +831,48 @@
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Form submit
-  function handleSubmit(e) {
+  // Form submit via Formspree
+  // PASSO NECESSÁRIO: crie uma conta em https://formspree.io com seu e-mail,
+  // crie um novo Form e substitua SEU_FORM_ID abaixo pelo ID gerado (ex: xabcd123)
+  const FORMSPREE_ID = 'SEU_FORM_ID';
+
+  document.getElementById('contactForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
-    btn.textContent = '✓ Mensagem enviada!';
-    btn.style.background = '#00b8d4';
+    const form = e.target;
+
+    btn.textContent = 'Enviando…';
     btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = 'Enviar mensagem →';
-      btn.style.background = '';
-      btn.disabled = false;
-      e.target.reset();
-    }, 3000);
-  }
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+
+      if (res.ok) {
+        btn.textContent = '✓ Mensagem enviada!';
+        btn.style.background = '#22c55e';
+        form.reset();
+        setTimeout(() => {
+          btn.textContent = 'Enviar mensagem →';
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 4000);
+      } else {
+        throw new Error();
+      }
+    } catch {
+      btn.textContent = '✗ Erro — tente por e-mail';
+      btn.style.background = '#ef4444';
+      setTimeout(() => {
+        btn.textContent = 'Enviar mensagem →';
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 4000);
+    }
+  });
 </script>
 </body>
 </html>
