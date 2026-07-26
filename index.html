@@ -13,25 +13,30 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://gabrielamunizfull.github.io/muniz-dev-landing-page">
 <meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="https://gabrielamunizfull.github.io/muniz-dev-landing-page/assets/gabriela-laptop.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="muniz.dev · Gabriela Muniz | Dev Freelancer">
 <meta name="twitter:description" content="Desenvolvimento full stack end-to-end com código limpo e foco em entrega real.">
+<meta name="twitter:image" content="https://gabrielamunizfull.github.io/muniz-dev-landing-page/assets/gabriela-laptop.png">
 <link rel="canonical" href="https://gabrielamunizfull.github.io/muniz-dev-landing-page">
+<link rel="icon" type="image/png" href="assets/gabriela-laptop.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"></noscript>
 <style>
   :root {
-    --bg: #090d14;
-    --bg2: #0f1520;
-    --accent: #a855f7;
-    --accent2: #7c3aed;
-    --text: #e8edf5;
-    --muted: #6b7a99;
-    --card: #121b2e;
-    --border: rgba(168,85,247,0.15);
+    --bg: #ffffff;
+    --panel: #fdf2f8;
+    --border: #ffd0e8;
+    --accent: #d6006e;
+    --accent2: #ff5cb8;
+    --tertiary: #7a3ff2;
+    --text: #8a4a6e;
+    --muted: #b07a9a;
+    --muted2: #b06090;
+    --form-panel: #ffe6f2;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -41,562 +46,470 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Instrument Sans', sans-serif;
-    font-size: 16px;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
     line-height: 1.6;
     overflow-x: hidden;
   }
 
-  /* ── NOISE OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--tertiary); }
+
+  ::selection { background: #ff8fd0; color: #4a1f3d; }
 
   /* ── NAV ── */
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
+    position: sticky;
+    top: 0;
     z-index: 100;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.2rem 6vw;
-    background: rgba(9,13,20,0.7);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
+    padding: 22px 40px;
+    background: var(--panel);
+    border-bottom: 2px solid var(--border);
   }
 
   .logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.25rem;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 15px;
     color: var(--accent);
-    letter-spacing: -0.5px;
   }
-
-  .logo span { color: var(--text); }
 
   nav ul {
     display: flex;
-    gap: 2rem;
+    gap: 28px;
     list-style: none;
+    font-size: 22px;
   }
 
-  nav a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
+  nav a { color: var(--accent); }
+  nav a:hover { color: var(--tertiary); }
 
-  nav a:hover { color: var(--accent); }
-
-  .nav-cta {
-    background: var(--accent);
-    color: var(--bg) !important;
-    padding: 0.5rem 1.25rem;
-    border-radius: 100px;
-    font-weight: 600 !important;
-    transition: opacity 0.2s !important;
-  }
-
-  .nav-cta:hover { opacity: 0.85; }
-
-  /* ── HERO ── */
-  #hero {
-    min-height: 100vh;
-    display: flex;
+  /* ── HERO / SOBRE ── */
+  #sobre {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 56px 40px 40px;
+    display: grid;
+    grid-template-columns: 0.9fr 1.3fr;
+    gap: 64px;
     align-items: center;
-    padding: 8rem 6vw 4rem;
-    position: relative;
-    overflow: hidden;
   }
 
-  .hero-glow {
-    position: absolute;
-    width: 700px;
-    height: 700px;
-    background: radial-gradient(circle, rgba(168,85,247,0.15) 0%, transparent 70%);
-    top: -100px;
-    right: -100px;
-    pointer-events: none;
+  .photo-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px;
+    text-align: center;
   }
 
-  .hero-glow2 {
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%);
-    bottom: 0;
-    left: -100px;
-    pointer-events: none;
+  .photo-card img {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    margin: 0 auto 20px;
+    display: block;
   }
 
-  .hero-content { position: relative; z-index: 1; max-width: 780px; }
+  .photo-name {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 16px;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .photo-role {
+    font-size: 20px;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+
+  .stat-row {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+
+  .stat-row .stat-num {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 20px;
+    color: var(--tertiary);
+  }
+
+  .stat-row .stat-label {
+    font-size: 16px;
+    color: var(--muted);
+  }
 
   .hero-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    background: rgba(168,85,247,0.1);
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    padding: 0.4rem 1rem;
-    font-size: 0.82rem;
+    gap: 10px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
     color: var(--accent);
-    font-weight: 500;
-    margin-bottom: 2rem;
-    animation: fadeUp 0.6s ease both;
+    background: var(--panel);
+    padding: 8px 16px;
+    border: 2px solid var(--border);
+    margin-bottom: 28px;
   }
 
   .badge-dot {
-    width: 6px; height: 6px;
-    background: var(--accent);
+    width: 8px;
+    height: 8px;
+    background: var(--accent2);
     border-radius: 50%;
-    animation: pulse 2s infinite;
+    animation: blink 1s step-end infinite;
   }
 
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.8); }
-  }
+  @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
 
   h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(2.8rem, 6vw, 5rem);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -2px;
-    margin-bottom: 1.5rem;
-    animation: fadeUp 0.6s 0.1s ease both;
-  }
-
-  h1 .accent { color: var(--accent); }
-
-  h1 .outline {
-    -webkit-text-stroke: 1.5px var(--text);
-    color: transparent;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 32px;
+    line-height: 1.55;
+    color: var(--accent);
+    margin: 0 0 22px;
   }
 
   .hero-sub {
-    font-size: 1.15rem;
-    color: var(--muted);
-    max-width: 520px;
-    margin-bottom: 2.5rem;
-    animation: fadeUp 0.6s 0.2s ease both;
+    font-size: 24px;
+    margin: 0 0 32px;
+    color: var(--text);
+    line-height: 1.5;
   }
 
   .hero-actions {
     display: flex;
-    gap: 1rem;
+    gap: 16px;
     flex-wrap: wrap;
-    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .btn-primary,
+  .btn-ghost,
+  .btn-submit {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 13px;
+    padding: 16px 24px;
+    border-radius: 6px;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
   }
 
   .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--accent);
-    color: var(--bg);
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-    padding: 0.85rem 2rem;
-    border-radius: 100px;
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 0 30px rgba(168,85,247,0.35);
+    color: var(--panel);
+    background: var(--accent2);
   }
 
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 50px rgba(168,85,247,0.55);
-  }
+  .btn-primary:hover { color: var(--panel); opacity: 0.9; }
 
   .btn-ghost {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    border: 1px solid var(--border);
-    color: var(--text);
-    font-family: 'Syne', sans-serif;
-    font-weight: 600;
-    font-size: 0.95rem;
-    padding: 0.85rem 2rem;
-    border-radius: 100px;
-    text-decoration: none;
-    transition: border-color 0.2s, color 0.2s;
-  }
-
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
-
-  /* Floating chips */
-  .hero-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-top: 3rem;
-    animation: fadeUp 0.6s 0.4s ease both;
-  }
-
-  .chip {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    padding: 0.35rem 0.9rem;
-    font-size: 0.78rem;
-    color: var(--muted);
-    font-weight: 500;
-  }
-
-  /* ── SECTIONS ── */
-  section { padding: 6rem 6vw; position: relative; }
-
-  .section-label {
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 1rem;
-  }
-
-  h2 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 800;
-    letter-spacing: -1.5px;
-    line-height: 1.1;
-    margin-bottom: 1.25rem;
-  }
-
-  .section-desc {
-    color: var(--muted);
-    max-width: 500px;
-    font-size: 1.05rem;
-    line-height: 1.7;
-  }
-
-  /* ── SERVICES ── */
-  #services { background: var(--bg2); }
-
-  .services-header { margin-bottom: 3.5rem; }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.25rem;
-  }
-
-  .service-card {
-    background: var(--card);
+    background: var(--panel);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2rem;
-    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-    position: relative;
-    overflow: hidden;
   }
 
-  .service-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at top left, rgba(168,85,247,0.07), transparent 60%);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
+  .btn-ghost:hover { color: var(--tertiary); }
 
-  .service-card:hover { transform: translateY(-4px); border-color: rgba(0,245,160,0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-  .service-card:hover::before { opacity: 1; }
-
-  .service-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  .service-card h3 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin-bottom: 0.6rem;
-    letter-spacing: -0.5px;
-  }
-
-  .service-card p { color: var(--muted); font-size: 0.92rem; line-height: 1.6; }
-
-  /* ── TECH ── */
+  /* ── TECH MARQUEE ── */
   .tech-strip {
-    padding: 2.5rem 6vw;
+    background: var(--panel);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
-    background: var(--bg);
-  }
-
-  .tech-label {
-    text-align: center;
-    font-size: 0.78rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1.5rem;
+    padding: 16px 0;
+    overflow: hidden;
+    margin-bottom: 60px;
   }
 
   .tech-list {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
+    gap: 60px;
+    white-space: nowrap;
+    width: max-content;
+    animation: marquee 22s linear infinite;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    color: var(--muted2);
   }
 
-  .tech-tag {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 0.4rem 1rem;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--text);
-    transition: border-color 0.2s, color 0.2s;
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 
-  .tech-tag:hover { border-color: var(--accent2); color: var(--accent2); }
-
-  /* ── ABOUT ── */
-  #sobre {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
+  /* ── SOBRE MIM (bio) ── */
+  #bio {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 0 40px 100px;
   }
 
-  .about-visual {
-    position: relative;
-    height: 420px;
+  .eyebrow {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    color: var(--tertiary);
+    margin-bottom: 14px;
   }
 
-  .about-card-main {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 2.5rem;
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    overflow: hidden;
-  }
-
-  .about-card-main::before {
-    content: '</>';
-    position: absolute;
-    top: 1.5rem;
-    right: 2rem;
-    font-family: 'Syne', sans-serif;
-    font-size: 5rem;
-    font-weight: 800;
-    color: rgba(168,85,247,0.07);
-    line-height: 1;
-  }
-
-  .about-avatar {
-    width: 72px;
-    height: 72px;
-    background: linear-gradient(135deg, #a855f7, #7c3aed);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.5rem;
-    color: var(--bg);
-    margin-bottom: 1rem;
-  }
-
-  .about-name {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1.2rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .about-role { color: var(--accent); font-size: 0.85rem; font-weight: 500; }
-
-  .stat-pill {
-    position: absolute;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 0.75rem 1.25rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .stat-pill.s1 { top: -20px; right: -20px; }
-  .stat-pill.s2 { top: 50%; left: -20px; transform: translateY(-50%); }
-
-  .stat-num {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.4rem;
+  #bio h2 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 24px;
     color: var(--accent);
-    line-height: 1;
+    margin: 0 0 24px;
+    line-height: 1.5;
   }
 
-  .stat-desc { font-size: 0.75rem; color: var(--muted); }
-
-  .about-text h2 { margin-bottom: 1.25rem; }
-
-  .about-text p {
-    color: var(--muted);
-    line-height: 1.75;
-    margin-bottom: 1rem;
-    font-size: 1.02rem;
+  #bio p {
+    font-size: 22px;
+    color: var(--text);
+    line-height: 1.7;
+    margin: 0 0 20px;
   }
 
-  .about-text p strong { color: var(--text); }
+  #bio p strong { color: var(--accent); }
 
-  /* ── CONTACT ── */
-  #contato { background: var(--bg2); }
+  .badge-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .skill-badge {
+    font-size: 16px;
+    color: var(--text);
+    background: var(--panel);
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+
+  /* ── SERVIÇOS ── */
+  #servicos {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 100px;
+  }
+
+  .services-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  #servicos h2 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 26px;
+    color: var(--accent);
+    margin: 0 0 20px;
+  }
+
+  .services-header p {
+    font-size: 24px;
+    color: var(--text);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .service-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+  }
+
+  .service-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+  }
+
+  .service-card h3 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    color: var(--accent);
+    margin: 0 0 14px;
+    line-height: 1.6;
+  }
+
+  .service-card p {
+    font-size: 20px;
+    color: var(--text);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ── FAQ ── */
+  #faq {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 0 40px 100px;
+  }
+
+  #faq h2 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 24px;
+    color: var(--accent);
+    margin: 0 0 32px;
+    line-height: 1.5;
+  }
+
+  .faq-item {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+
+  .faq-item summary {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    line-height: 1.6;
+    cursor: pointer;
+  }
+
+  .faq-item summary::marker {
+    color: var(--accent2);
+  }
+
+  .faq-item p {
+    font-size: 20px;
+    color: var(--text);
+    line-height: 1.6;
+    margin-top: 14px;
+  }
+
+  /* ── CONTATO ── */
+  #contato {
+    background: var(--panel);
+    border-top: 1px solid var(--border);
+    padding: 100px 40px;
+  }
 
   .contact-grid {
+    max-width: 1200px;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 4rem;
-    align-items: start;
-    margin-top: 3rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
   }
 
-  .contact-info h3 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-    letter-spacing: -0.5px;
+  #contato h2 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 24px;
+    color: var(--accent);
+    margin: 0 0 24px;
+    line-height: 1.5;
   }
 
-  .contact-info p { color: var(--muted); line-height: 1.7; margin-bottom: 2rem; }
-
-  .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
-
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.92rem;
-    transition: color 0.2s;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid var(--border);
+  #contato .intro-p {
+    font-size: 22px;
+    color: var(--text);
+    line-height: 1.6;
+    margin: 0 0 32px;
   }
 
-  .contact-link:hover { color: var(--accent); }
-  .contact-link span { font-size: 1.1rem; }
+  .contact-info-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
 
-  /* Form */
-  form { display: flex; flex-direction: column; gap: 1rem; }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-  .field {
+  .contact-links {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 14px;
+    font-size: 22px;
   }
 
-  label {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--muted);
-    letter-spacing: 0.5px;
-  }
-
-  input, textarea, select {
-    background: var(--card);
+  form {
+    background: var(--form-panel);
     border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 0.85rem 1rem;
-    color: var(--text);
-    font-family: 'Instrument Sans', sans-serif;
-    font-size: 0.92rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
+    border-radius: 14px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .form-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    color: var(--accent);
+  }
+
+  input, select, textarea {
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: #4a1f3d;
+    padding: 12px 14px;
     width: 100%;
+    outline: none;
   }
 
-  input:focus, textarea:focus, select:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(168,85,247,0.1);
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--accent2);
   }
 
-  textarea { resize: vertical; min-height: 120px; }
-
-  select option { background: var(--card); }
+  textarea { resize: vertical; min-height: 100px; }
 
   .btn-submit {
-    background: var(--accent);
-    color: var(--bg);
-    border: none;
-    border-radius: 100px;
-    padding: 0.95rem 2.5rem;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-    cursor: pointer;
-    align-self: flex-start;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 0 20px rgba(168,85,247,0.3);
+    color: var(--panel);
+    background: var(--accent2);
   }
 
-  .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(168,85,247,0.5); }
+  .btn-submit:hover { opacity: 0.9; }
 
   /* ── FOOTER ── */
   footer {
-    padding: 2rem 6vw;
+    text-align: center;
+    padding: 40px;
     border-top: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    color: var(--muted);
   }
 
-  footer p { color: var(--muted); font-size: 0.85rem; }
-
-  footer .logo { font-size: 1rem; }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
+  footer .logo {
+    color: var(--accent);
+    margin-bottom: 10px;
+    font-size: 11px;
   }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .reveal.visible { opacity: 1; transform: translateY(0); }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 860px) {
-    #sobre { grid-template-columns: 1fr; }
-    .about-visual { height: 300px; order: -1; }
-    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .form-row { grid-template-columns: 1fr; }
-    nav ul { display: none; }
+    nav { padding: 18px 24px; }
+    nav ul { gap: 16px; font-size: 16px; }
+
+    #sobre {
+      grid-template-columns: 1fr;
+      padding: 40px 24px 24px;
+      gap: 32px;
+    }
+
+    h1 { font-size: 24px; }
+    .hero-sub { font-size: 20px; }
+
+    #bio, #servicos { padding-left: 24px; padding-right: 24px; }
+
+    .services-grid { grid-template-columns: 1fr; }
+
+    .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+
+    #contato { padding: 60px 24px; }
   }
 </style>
 <script type="application/ld+json">
@@ -613,230 +526,249 @@
   "knowsAbout": ["JavaScript", "TypeScript", "React", "Node.js", "Java", "Spring", "Python", "SQL", "APIs REST", "Mobile Development"]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quanto custa contratar uma desenvolvedora freelancer full stack?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O valor varia conforme escopo, prazo e complexidade do projeto. Envie os detalhes pelo formulário de contato e eu retorno com uma avaliação inicial gratuita em até 24 horas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto tempo leva para desenvolver um projeto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende do tamanho do projeto: uma landing page pode ficar pronta em poucos dias, enquanto sistemas web completos ou integrações levam algumas semanas. O prazo é definido junto com você antes de começar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quais tecnologias você utiliza?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Trabalho com JavaScript, TypeScript, React e Node.js no ecossistema JS, Java com Spring para backends robustos, Python, SQL/PostgreSQL para banco de dados, além de integrações via REST APIs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Você atende empresas e projetos remotos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim, atendo clientes de qualquer lugar do Brasil e do exterior, 100% remoto, com comunicação por e-mail, WhatsApp ou videochamada."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <div class="logo">muniz<span>.dev</span></div>
+  <div class="logo">MUNIZ.DEV</div>
   <ul>
-    <li><a href="#servicos">Serviços</a></li>
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#contato" class="nav-cta">Falar comigo</a></li>
+    <li><a href="#sobre">SOBRE</a></li>
+    <li><a href="#servicos">SERVIÇOS</a></li>
+    <li><a href="#contato">CONTATO</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-glow"></div>
-  <div class="hero-glow2"></div>
-  <div class="hero-content">
+<!-- SOBRE / HERO -->
+<section id="sobre">
+  <div class="photo-card">
+    <img src="assets/gabriela-laptop.png" alt="Gabriela Muniz, desenvolvedora full stack" loading="eager">
+    <div class="photo-name">GABRIELA</div>
+    <div class="photo-role">Full Stack Developer · Java · React · Node.js</div>
+    <div class="stat-row">
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">FOCO NA ENTREGA</div>
+      </div>
+      <div>
+        <div class="stat-num">FULL</div>
+        <div class="stat-label">STACK COVERAGE</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
     <div class="hero-badge">
       <span class="badge-dot"></span>
-      Disponível para projetos
+      DISPONÍVEL PARA PROJETOS
     </div>
-    <h1>
-      Código que<br>
-      <span class="accent">resolve</span> de<br>
-      <span class="outline">verdade.</span>
-    </h1>
-    <p class="hero-sub">
-      Desenvolvimento full stack end-to-end — do banco de dados à interface — com foco em entrega real, código limpo e tecnologia que escala.
-    </p>
+    <h1>CÓDIGO QUE RESOLVE DE VERDADE</h1>
+    <p class="hero-sub">Desenvolvimento full stack end-to-end — do banco de dados à interface — com foco em entrega real, código limpo e tecnologia que escala.</p>
     <div class="hero-actions">
-      <a href="#contato" class="btn-primary">Solicitar proposta →</a>
-      <a href="#sobre" class="btn-ghost">Conhecer meu trabalho</a>
-    </div>
-    <div class="hero-chips">
-      <span class="chip">Frontend</span>
-      <span class="chip">Backend</span>
-      <span class="chip">APIs REST</span>
-      <span class="chip">Banco de Dados</span>
-      <span class="chip">Mobile</span>
-      <span class="chip">Integrações</span>
+      <a href="#contato" class="btn-primary">SOLICITAR PROPOSTA</a>
+      <a href="#servicos" class="btn-ghost">CONHECER MEU TRABALHO</a>
     </div>
   </div>
 </section>
 
-<!-- TECH STRIP -->
+<!-- TECH MARQUEE -->
 <div class="tech-strip">
-  <p class="tech-label">Tecnologias</p>
   <div class="tech-list">
-    <span class="tech-tag">JavaScript</span>
-    <span class="tech-tag">TypeScript</span>
-    <span class="tech-tag">React</span>
-    <span class="tech-tag">Node.js</span>
-    <span class="tech-tag">Java</span>
-    <span class="tech-tag">Spring</span>
-    <span class="tech-tag">Python</span>
-    <span class="tech-tag">SQL</span>
-    <span class="tech-tag">PostgreSQL</span>
-    <span class="tech-tag">REST APIs</span>
-    <span class="tech-tag">Git</span>
-    <span class="tech-tag">Docker</span>
-    <span class="tech-tag">HTML / CSS</span>
+    <span>JAVASCRIPT</span>
+    <span>TYPESCRIPT</span>
+    <span>REACT</span>
+    <span>NODE.JS</span>
+    <span>JAVA</span>
+    <span>SPRING</span>
+    <span>PYTHON</span>
+    <span>SQL</span>
+    <span>POSTGRESQL</span>
+    <span>REST APIS</span>
+    <span>GIT</span>
+    <span>DOCKER</span>
+    <span>HTML/CSS</span>
+    <span>JAVASCRIPT</span>
+    <span>TYPESCRIPT</span>
+    <span>REACT</span>
+    <span>NODE.JS</span>
+    <span>JAVA</span>
+    <span>SPRING</span>
+    <span>PYTHON</span>
+    <span>SQL</span>
+    <span>POSTGRESQL</span>
+    <span>REST APIS</span>
+    <span>GIT</span>
+    <span>DOCKER</span>
+    <span>HTML/CSS</span>
   </div>
 </div>
 
-<!-- SERVICES -->
+<!-- SOBRE MIM (BIO) -->
+<section id="bio">
+  <div class="eyebrow">SOBRE MIM</div>
+  <h2>DEV QUE DOMINA TODA A STACK</h2>
+  <p>Sou desenvolvedora full stack com experiência em <strong>frontend, backend, APIs, banco de dados e mobile</strong>. Trabalho com tecnologias modernas e foco em código limpo, escalável e de fácil manutenção.</p>
+  <p>Tenho forte base em <strong>Java com Spring</strong> para backends robustos, combinada com domínio do ecossistema JavaScript — React no frontend e Node.js no backend.</p>
+  <p>Acredito que <strong>bom código não é só código que funciona</strong> — é código que qualquer desenvolvedor consegue entender, manter e evoluir. Aplico SOLID, Clean Code e boas práticas em cada projeto.</p>
+  <div class="badge-row">
+    <span class="skill-badge">FRONTEND</span>
+    <span class="skill-badge">BACKEND</span>
+    <span class="skill-badge">APIS REST</span>
+    <span class="skill-badge">BANCO DE DADOS</span>
+    <span class="skill-badge">MOBILE</span>
+    <span class="skill-badge">INTEGRAÇÕES</span>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
 <section id="servicos">
-  <div class="services-header reveal">
-    <p class="section-label">O que eu faço</p>
-    <h2>Serviços que<br>entregam resultado</h2>
-    <p class="section-desc">Atendo desde projetos do zero até melhorias em sistemas existentes — com atenção ao prazo, ao código e ao usuário final.</p>
+  <div class="services-header">
+    <div class="eyebrow" style="text-align:center;">O QUE EU FAÇO</div>
+    <h2>SERVIÇOS QUE ENTREGAM RESULTADO</h2>
+    <p>Atendo desde projetos do zero até melhorias em sistemas existentes — com atenção ao prazo, ao código e ao usuário final.</p>
   </div>
   <div class="services-grid">
-    <div class="service-card reveal">
+    <div class="service-card">
       <div class="service-icon">🖥️</div>
-      <h3>Desenvolvimento Frontend</h3>
+      <h3>DESENVOLVIMENTO FRONTEND</h3>
       <p>Interfaces modernas, responsivas e acessíveis com React, HTML/CSS e boas práticas de UX.</p>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card">
       <div class="service-icon">⚙️</div>
-      <h3>Desenvolvimento Backend</h3>
+      <h3>DESENVOLVIMENTO BACKEND</h3>
       <p>APIs robustas, regras de negócio sólidas e arquitetura pensada para escalar com Node.js, Java/Spring e Python.</p>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card">
       <div class="service-icon">🔗</div>
-      <h3>Integrações & APIs</h3>
+      <h3>INTEGRAÇÕES & APIS</h3>
       <p>Conexão com sistemas externos, gateways de pagamento, ERPs, plataformas SaaS e qualquer API REST.</p>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card">
       <div class="service-icon">🗄️</div>
-      <h3>Banco de Dados</h3>
+      <h3>BANCO DE DADOS</h3>
       <p>Modelagem, otimização de queries, migrações e manutenção em bancos relacionais e não-relacionais.</p>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card">
       <div class="service-icon">📱</div>
-      <h3>Aplicativos Mobile</h3>
+      <h3>APLICATIVOS MOBILE</h3>
       <p>Apps para Android e iOS com foco em performance e experiência do usuário, usando tecnologias modernas.</p>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card">
       <div class="service-icon">🚀</div>
-      <h3>Consultoria Técnica</h3>
+      <h3>CONSULTORIA TÉCNICA</h3>
       <p>Análise de projetos, revisão de código, arquitetura de sistemas e suporte técnico especializado.</p>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="sobre">
-  <div class="about-visual reveal">
-    <div class="about-card-main">
-      <div class="about-avatar">G</div>
-      <div class="about-name">Gabriela</div>
-      <div class="about-role">Full Stack Developer · Java · React · Node.js</div>
-    </div>
-    <div class="stat-pill s1 reveal">
-      <div>
-        <div class="stat-num">100%</div>
-        <div class="stat-desc">Foco na entrega</div>
-      </div>
-    </div>
-    <div class="stat-pill s2 reveal">
-      <div>
-        <div class="stat-num">Full</div>
-        <div class="stat-desc">Stack coverage</div>
-      </div>
-    </div>
-  </div>
-  <div class="about-text reveal">
-    <p class="section-label">Sobre mim</p>
-    <h2>Dev que domina toda a stack</h2>
-    <p>
-      Sou desenvolvedora full stack com experiência em <strong>frontend, backend, APIs, banco de dados e mobile</strong>. Trabalho com tecnologias modernas e foco em código limpo, escalável e de fácil manutenção.
-    </p>
-    <p>
-      Tenho forte base em <strong>Java com Spring</strong> para backends robustos e soluções enterprise, combinada com domínio do ecossistema JavaScript — React no frontend e Node.js no backend.
-    </p>
-    <p>
-      Acredito que <strong>bom código não é só código que funciona</strong> — é código que qualquer desenvolvedor consegue entender, manter e evoluir. Por isso aplico SOLID, Clean Code e boas práticas em cada projeto.
-    </p>
-    <a href="#contato" class="btn-primary" style="margin-top: 1.5rem; display: inline-flex;">Vamos conversar →</a>
-  </div>
+<!-- FAQ -->
+<section id="faq">
+  <div class="eyebrow">DÚVIDAS FREQUENTES</div>
+  <h2>PERGUNTAS FREQUENTES</h2>
+  <details class="faq-item">
+    <summary>QUANTO CUSTA CONTRATAR UMA DESENVOLVEDORA FREELANCER FULL STACK?</summary>
+    <p>O valor varia conforme escopo, prazo e complexidade do projeto. Envie os detalhes pelo formulário de contato e eu retorno com uma avaliação inicial gratuita em até 24 horas.</p>
+  </details>
+  <details class="faq-item">
+    <summary>QUANTO TEMPO LEVA PARA DESENVOLVER UM PROJETO?</summary>
+    <p>Depende do tamanho do projeto: uma landing page pode ficar pronta em poucos dias, enquanto sistemas web completos ou integrações levam algumas semanas. O prazo é definido junto com você antes de começar.</p>
+  </details>
+  <details class="faq-item">
+    <summary>QUAIS TECNOLOGIAS VOCÊ UTILIZA?</summary>
+    <p>Trabalho com JavaScript, TypeScript, React e Node.js no ecossistema JS, Java com Spring para backends robustos, Python, SQL/PostgreSQL para banco de dados, além de integrações via REST APIs.</p>
+  </details>
+  <details class="faq-item">
+    <summary>VOCÊ ATENDE EMPRESAS E PROJETOS REMOTOS?</summary>
+    <p>Sim, atendo clientes de qualquer lugar do Brasil e do exterior, 100% remoto, com comunicação por e-mail, WhatsApp ou videochamada.</p>
+  </details>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTATO -->
 <section id="contato">
-  <div class="reveal">
-    <p class="section-label">Contato</p>
-    <h2>Vamos construir<br>algo juntos?</h2>
-    <p class="section-desc">Descreva seu projeto e eu retorno em até 24 horas com uma avaliação inicial gratuita.</p>
-  </div>
   <div class="contact-grid">
-    <div class="contact-info reveal">
-      <h3>Me encontre por aqui</h3>
-      <p>Prefere ir direto ao ponto? Me chame por e-mail ou LinkedIn — respondo rápido.</p>
+    <div>
+      <div class="eyebrow">CONTATO</div>
+      <h2>VAMOS CONSTRUIR ALGO JUNTOS?</h2>
+      <p class="intro-p">Descreva seu projeto e eu retorno em até 24 horas com uma avaliação inicial gratuita.</p>
+
+      <div class="contact-info-title">ME ENCONTRE POR AQUI</div>
       <div class="contact-links">
-        <a href="mailto:contato@muniz.dev" class="contact-link">
-          <span>📧</span> contato@muniz.dev
-        </a>
-        <a href="https://www.linkedin.com/in/gabriela-muniz-1ab02a1ab" class="contact-link">
-          <span>💼</span> linkedin.com/in/gabriela-muniz-1ab02a1ab
-        </a>
-        <a href="https://github.com/GabrielaMunizFull" class="contact-link" target="_blank" rel="noopener">
-          <span>🐙</span> github.com/GabrielaMunizFull
-        </a>
-        <a href="https://wa.me/558194561507" class="contact-link" target="_blank" rel="noopener">
-          <span>💬</span> WhatsApp
-        </a>
+        <a href="mailto:gabrielasdsmuniz@gmail.com">📧 gabrielasdsmuniz@gmail.com</a>
+        <a href="https://www.linkedin.com/in/gabriela-muniz-1ab02a1ab" target="_blank" rel="noopener">💼 linkedin.com/in/gabriela-muniz</a>
+        <a href="https://github.com/GabrielaMunizFull" target="_blank" rel="noopener">🐙 github.com/GabrielaMunizFull</a>
+        <a href="https://instagram.com/muniz.devv" target="_blank" rel="noopener">📸 instagram.com/muniz.devv</a>
+        <a href="https://wa.me/558194561507" target="_blank" rel="noopener">💬 WhatsApp</a>
       </div>
     </div>
-    <form class="reveal" id="contactForm">
-      <div class="form-row">
-        <div class="field">
-          <label>Nome</label>
-          <input type="text" name="nome" placeholder="Seu nome" required>
-        </div>
-        <div class="field">
-          <label>E-mail</label>
-          <input type="email" name="email" placeholder="seu@email.com" required>
-        </div>
-      </div>
-      <div class="field">
-        <label>Tipo de projeto</label>
-        <select name="tipo_projeto">
-          <option value="">Selecione...</option>
-          <option>Site / Landing Page</option>
-          <option>Sistema Web</option>
-          <option>API / Backend</option>
-          <option>Aplicativo Mobile</option>
-          <option>Integração</option>
-          <option>Consultoria</option>
-          <option>Outro</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Mensagem</label>
-        <textarea name="mensagem" placeholder="Descreva seu projeto, prazo e orçamento estimado..."></textarea>
-      </div>
-      <button type="submit" class="btn-submit" id="submitBtn">Enviar mensagem →</button>
+
+    <form id="contactForm">
+      <div class="form-title">NOVA MENSAGEM</div>
+      <input type="text" name="nome" placeholder="Nome" required>
+      <input type="email" name="email" placeholder="E-mail" required>
+      <select name="tipo_projeto">
+        <option value="">Tipo de projeto…</option>
+        <option>Site / Landing Page</option>
+        <option>Sistema Web</option>
+        <option>API / Backend</option>
+        <option>Aplicativo Mobile</option>
+        <option>Integração</option>
+        <option>Consultoria</option>
+        <option>Outro</option>
+      </select>
+      <textarea name="mensagem" placeholder="Mensagem" rows="4"></textarea>
+      <button type="submit" class="btn-submit" id="submitBtn">ENVIAR MENSAGEM →</button>
     </form>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="logo">muniz<span>.dev</span></div>
-  <p>© 2025 · Feito com 💜 e muito código limpo</p>
+  <div class="logo">MUNIZ.DEV</div>
+  © 2026 · FEITO COM 💜 E MUITO CÓDIGO LIMPO
 </footer>
 
 <script>
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
   // Form submit via Formspree
-  // PASSO NECESSÁRIO: crie uma conta em https://formspree.io com seu e-mail,
-  // crie um novo Form e substitua SEU_FORM_ID abaixo pelo ID gerado (ex: xabcd123)
   const FORMSPREE_ID = 'meeddprz';
 
   document.getElementById('contactForm').addEventListener('submit', async (e) => {
@@ -844,7 +776,7 @@
     const btn = document.getElementById('submitBtn');
     const form = e.target;
 
-    btn.textContent = 'Enviando…';
+    btn.textContent = 'ENVIANDO…';
     btn.disabled = true;
 
     try {
@@ -855,11 +787,11 @@
       });
 
       if (res.ok) {
-        btn.textContent = '✓ Mensagem enviada!';
+        btn.textContent = '✓ MENSAGEM ENVIADA!';
         btn.style.background = '#22c55e';
         form.reset();
         setTimeout(() => {
-          btn.textContent = 'Enviar mensagem →';
+          btn.textContent = 'ENVIAR MENSAGEM →';
           btn.style.background = '';
           btn.disabled = false;
         }, 4000);
@@ -867,10 +799,10 @@
         throw new Error();
       }
     } catch {
-      btn.textContent = '✗ Erro — tente por e-mail';
+      btn.textContent = '✗ ERRO — TENTE POR E-MAIL';
       btn.style.background = '#ef4444';
       setTimeout(() => {
-        btn.textContent = 'Enviar mensagem →';
+        btn.textContent = 'ENVIAR MENSAGEM →';
         btn.style.background = '';
         btn.disabled = false;
       }, 4000);
