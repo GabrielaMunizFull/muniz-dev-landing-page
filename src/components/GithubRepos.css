@@ -1,0 +1,72 @@
+#github {
+  max-width: 900px;
+}
+
+.github-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: auto;
+}
+
+.github-status {
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+.github-status a {
+  color: var(--accent);
+}
+
+.github-repo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-body);
+}
+
+.github-repo-row:last-child {
+  border-bottom: none;
+}
+
+.github-repo-name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--accent);
+}
+
+.github-repo-desc {
+  font-size: 14px;
+  color: var(--text-body);
+  flex: 1;
+  min-width: 160px;
+}
+
+.github-repo-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-left: auto;
+  align-items: center;
+}
+
+.github-repo-lang {
+  font-family: var(--font-display);
+  font-size: 9px;
+  color: var(--text-secondary);
+  border: 1px solid var(--border2);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+@media (max-width: 640px) {
+  .github-repo-meta {
+    margin-left: 0;
+    width: 100%;
+  }
+}

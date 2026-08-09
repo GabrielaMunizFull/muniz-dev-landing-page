@@ -1,0 +1,63 @@
+#como {
+  max-width: 1200px;
+}
+
+.steps-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+
+.steps-line {
+  position: absolute;
+  top: 34px;
+  left: calc(16.66% + 14px);
+  right: calc(16.66% + 14px);
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--border2));
+  transform-origin: left;
+  z-index: 0;
+}
+
+@media (max-width: 860px) {
+  .steps-line { display: none; }
+}
+
+.step-card {
+  position: relative;
+  z-index: 1;
+  background: var(--bg-alt);
+  border: 1px solid var(--border2);
+  border-radius: 14px;
+  padding: 32px 28px;
+  transition: border-color 0.2s;
+}
+
+.step-number {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.step-card h3 {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.step-card p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 860px) {
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+}

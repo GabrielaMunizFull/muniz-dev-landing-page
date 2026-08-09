@@ -1,0 +1,46 @@
+.tech-strip {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 0;
+  overflow: hidden;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tech-row {
+  overflow: hidden;
+}
+
+.tech-list {
+  display: flex;
+  gap: 60px;
+  white-space: nowrap;
+  width: max-content;
+  font-family: var(--font-display);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.tech-list-forward {
+  animation: marquee 26s linear infinite;
+}
+
+.tech-list-reverse {
+  animation: marquee-reverse 26s linear infinite;
+}
+
+.tech-row:hover .tech-list {
+  animation-play-state: paused;
+}
+
+.tech-list span:hover {
+  color: var(--accent);
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}

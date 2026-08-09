@@ -1,0 +1,73 @@
+.terminal-window {
+  background: #0f0a1a;
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  margin-top: 24px;
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+}
+
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot-red { background: #ff5f56; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green { background: #27c93f; }
+
+.terminal-title {
+  margin-left: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.terminal-body {
+  padding: 28px;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 15px;
+  color: var(--text-body);
+  min-height: 260px;
+}
+
+.terminal-prompt {
+  color: var(--accent);
+  margin-right: 4px;
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background: var(--accent);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+.terminal-output {
+  margin-top: 20px;
+  font-family: var(--font-body);
+}
+
+.terminal-output p {
+  margin-bottom: 18px;
+  line-height: 1.7;
+}
+
+@media (max-width: 640px) {
+  .terminal-body {
+    padding: 20px;
+    font-size: 13px;
+  }
+}

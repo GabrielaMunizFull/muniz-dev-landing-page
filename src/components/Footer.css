@@ -1,0 +1,14 @@
+.footer {
+  text-align: center;
+  padding: 40px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-display);
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.footer-logo {
+  color: var(--accent);
+  margin-bottom: 10px;
+  font-size: 11px;
+}

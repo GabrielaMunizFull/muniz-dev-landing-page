@@ -1,0 +1,31 @@
+#sobre {
+  max-width: 840px;
+}
+
+#sobre p {
+  font-size: 18px;
+  color: var(--text-body);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+#sobre p strong {
+  color: var(--accent);
+}
+
+.badge-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.skill-badge {
+  font-size: 13px;
+  color: var(--text-body);
+  background: var(--bg-alt);
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border2);
+  display: inline-block;
+}
