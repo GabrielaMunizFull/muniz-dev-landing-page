@@ -66,6 +66,16 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           </div>
           <h3>{project.title}</h3>
           <p>{project.description}</p>
+          {project.siteUrl && (
+            <a
+              className="project-site-link"
+              href={project.siteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {project.siteUrl.includes('github.com') ? 'Ver repositório ↗' : 'Ver site ↗'}
+            </a>
+          )}
         </div>
       ) : (
         <div className="card-flip-outer">

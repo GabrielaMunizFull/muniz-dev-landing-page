@@ -34,26 +34,30 @@ export const projects = [
   {
     id: 1,
     title: 'CUIDARIS',
-    description: 'SaaS de saúde para assistentes virtuais, profissionais e clínicas.',
+    description: 'SaaS de gestão pra clínicas: agenda semanal com validação de horário, cadastro de pacientes e profissionais, controle financeiro e emissão de recibo em PDF.',
     embedUrl: 'https://www.loom.com/embed/6fb8ec3ee9224025bf434c684d7037e6',
+    siteUrl: 'https://cuidaris-web.vercel.app/',
   },
   {
     id: 2,
     title: 'VIDEOMAKER EMILY',
     description: 'Landing page / portfólio para social media, criado para videomakeremily.com.',
     embedUrl: 'https://www.loom.com/embed/2469a30a0e0e45a5b0c2bb1878dcfcf1',
+    siteUrl: 'https://videomakeremily.com/',
   },
   {
     id: 3,
     title: 'ÍTACA',
     description: 'Protótipo de app de navegação — o app que Odisseu usaria pra voltar pra casa.',
     videoUrl: itacaVideo,
+    siteUrl: 'https://github.com/GabrielaMunizFull/itaca',
   },
   {
     id: 4,
     title: 'FECHOU',
     description: 'Plataforma que facilita a contratação entre freelancers e clientes.',
     embedUrl: 'https://www.loom.com/embed/381aad69c19346fdb43ebd00a9005e7a',
+    siteUrl: 'https://fechou-one.vercel.app/',
   },
 ];
 

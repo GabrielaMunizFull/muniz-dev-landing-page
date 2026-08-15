@@ -145,6 +145,20 @@
   line-height: 1.5;
 }
 
+.project-site-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.project-site-link:hover {
+  text-decoration: underline;
+}
+
 .card-back-hint {
   margin-top: 20px;
   font-family: var(--font-display);
