@@ -1,0 +1,25 @@
+# muniz.dev — Gabriela Muniz
+
+> Desenvolvedora Full Stack freelancer, atendimento 100% remoto (Brasil e exterior). Frontend, backend, APIs, banco de dados e mobile, com foco em código limpo e entrega real.
+
+Avaliação inicial gratuita em até 24 horas. Orçamento personalizado por escopo — sem tabela de preço fixa.
+
+## Docs
+
+- [Sobre](https://gabrielamunizfull.github.io/muniz-dev-landing-page/#sobre): experiência full stack, forte em Java/Spring e ecossistema JavaScript (React, Node.js), aplica SOLID e Clean Code.
+- [Serviços](https://gabrielamunizfull.github.io/muniz-dev-landing-page/#servicos): desenvolvimento frontend, backend, integrações & APIs, banco de dados, apps mobile, consultoria técnica.
+- [Como funciona](https://gabrielamunizfull.github.io/muniz-dev-landing-page/#como): briefing com avaliação gratuita em 24h, desenvolvimento incremental, entrega com deploy e suporte pós-entrega.
+- [FAQ](https://gabrielamunizfull.github.io/muniz-dev-landing-page/#faq): preço, prazo, tecnologias usadas, atendimento remoto.
+
+## Projetos
+
+- [CUIDARIS](https://cuidaris-web.vercel.app/): SaaS de gestão pra clínicas — agenda semanal com validação de horário, cadastro de pacientes e profissionais, controle financeiro, recibo em PDF.
+- [Videomaker Emily](https://videomakeremily.com/): landing page / portfólio pra social media.
+- [Ítaca](https://github.com/GabrielaMunizFull/itaca): protótipo de app de navegação.
+- [Fechou](https://fechou-one.vercel.app/): plataforma que facilita contratação entre freelancers e clientes.
+
+## Optional
+
+- [GitHub](https://github.com/GabrielaMunizFull): perfil com repositórios públicos.
+- [Parceiros](https://gabrielamunizfull.github.io/muniz-dev-landing-page/#parceiros): agência Vortem, marketing estratégico.
+- [Contato](https://gabrielamunizfull.github.io/muniz-dev-landing-page/#contato): formulário, e-mail, LinkedIn, GitHub, Instagram, WhatsApp.

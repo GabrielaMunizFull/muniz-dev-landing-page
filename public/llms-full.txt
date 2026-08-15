@@ -1,0 +1,58 @@
+# muniz.dev — Gabriela Muniz
+
+> Desenvolvedora Full Stack freelancer, atendimento 100% remoto (Brasil e exterior). Frontend, backend, APIs, banco de dados e mobile, com foco em código limpo e entrega real.
+
+## Sobre
+
+Desenvolvedora full stack com experiência em frontend, backend, APIs, banco de dados e mobile. Forte base em Java com Spring para backends robustos, combinada com domínio do ecossistema JavaScript — React no frontend e Node.js no backend. Trabalha com Python e SQL/PostgreSQL. Aplica SOLID, Clean Code e boas práticas em cada projeto.
+
+Stack: Frontend, Backend, APIs REST, Banco de Dados, Mobile, Integrações.
+Tecnologias: JavaScript, TypeScript, React, Node.js, Java, Spring, Python, SQL, PostgreSQL, REST APIs, Git, Docker, HTML/CSS.
+
+## Serviços
+
+- **Desenvolvimento Frontend**: interfaces modernas, responsivas e acessíveis com React, HTML/CSS e boas práticas de UX.
+- **Desenvolvimento Backend**: APIs robustas, regras de negócio sólidas e arquitetura pensada para escalar com Node.js, Java/Spring e Python.
+- **Integrações & APIs**: conexão com sistemas externos, gateways de pagamento, ERPs, plataformas SaaS e qualquer API REST.
+- **Banco de Dados**: modelagem, otimização de queries, migrações e manutenção em bancos relacionais e não-relacionais.
+- **Aplicativos Mobile**: apps para Android e iOS com foco em performance e experiência do usuário.
+- **Consultoria Técnica**: análise de projetos, revisão de código, arquitetura de sistemas e suporte técnico especializado.
+
+## Como funciona
+
+1. **Briefing**: cliente descreve projeto, escopo e prazo. Avaliação inicial gratuita em até 24 horas.
+2. **Desenvolvimento**: código limpo, comunicação constante, entregas incrementais.
+3. **Entrega**: deploy, testes finais e suporte pós-entrega. Projeto no ar, documentado e pronto para escalar.
+
+## Projetos
+
+- **CUIDARIS** ([site](https://cuidaris-web.vercel.app/)): SaaS de gestão pra clínicas. Agenda semanal com validação de horário e atualização de status (confirmado, pendente, cancelado, remarcado). Cadastro de pacientes e de profissionais de saúde (com limites por plano). Controle financeiro com status de pagamento e resumo mensal. Emissão de recibo em PDF.
+- **Videomaker Emily** ([site](https://videomakeremily.com/)): landing page / portfólio para social media, criado para videomakeremily.com.
+- **Ítaca** ([repositório](https://github.com/GabrielaMunizFull/itaca)): protótipo de app de navegação.
+- **Fechou** ([site](https://fechou-one.vercel.app/)): plataforma que facilita a contratação entre freelancers e clientes.
+
+## FAQ
+
+**Quanto custa contratar uma desenvolvedora freelancer full stack?**
+O valor varia conforme escopo, prazo e complexidade do projeto. Avaliação inicial gratuita em até 24 horas via formulário de contato.
+
+**Quanto tempo leva para desenvolver um projeto?**
+Depende do tamanho: uma landing page pode ficar pronta em poucos dias; sistemas web completos ou integrações levam algumas semanas. Prazo definido junto com o cliente antes de começar.
+
+**Quais tecnologias você utiliza?**
+JavaScript, TypeScript, React e Node.js no ecossistema JS; Java com Spring para backends robustos; Python; SQL/PostgreSQL; integrações via REST APIs.
+
+**Você atende empresas e projetos remotos?**
+Sim, atende clientes de qualquer lugar do Brasil e do exterior, 100% remoto, por e-mail, WhatsApp ou videochamada.
+
+## Parceiros
+
+**Vortem**: agência de marketing estratégico. Parceria pra clientes que precisam de estratégia de marketing além do desenvolvimento.
+
+## Contato
+
+- E-mail: gabrielasdsmuniz@gmail.com
+- LinkedIn: https://www.linkedin.com/in/gabriela-muniz-1ab02a1ab
+- GitHub: https://github.com/GabrielaMunizFull
+- Instagram: https://instagram.com/muniz.devv
+- WhatsApp: https://wa.me/558194561507
