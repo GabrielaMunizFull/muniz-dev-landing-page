@@ -28,8 +28,8 @@ const BOOT_STATUSES = [
   'PRONTO.',
 ];
 
-const BOOT_DURATION = 800;
-const BOOT_AUTO_DISMISS = 500;
+const BOOT_DURATION = 450;
+const BOOT_AUTO_DISMISS = 150;
 
 function BootOverlay({ onDone }: { onDone: () => void }) {
   const [progress, setProgress] = useState(0);
@@ -63,7 +63,7 @@ function BootOverlay({ onDone }: { onDone: () => void }) {
   const statusIndex = Math.min(BOOT_STATUSES.length - 1, Math.floor(progress / 26));
 
   return (
-    <motion.div className="boot-overlay" exit={{ opacity: 0, scale: 1.05 }} transition={{ duration: 0.5 }}>
+    <motion.div className="boot-overlay" exit={{ opacity: 0, scale: 1.05 }} transition={{ duration: 0.25 }}>
       <div className="boot-logo glitch" data-text="MUNIZ.DEV">MUNIZ.DEV</div>
       <div className="boot-status">{BOOT_STATUSES[statusIndex]}</div>
       <div className="boot-bar-track">
@@ -219,7 +219,12 @@ export function Hero() {
             DISPONÍVEL PARA PROJETOS
           </motion.div>
           <Title />
-          <motion.p className="hero-sub" variants={item}>
+          <motion.p
+            className="hero-sub"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+          >
             Desenvolvimento full stack end-to-end — do banco de dados à interface —
             com foco em entrega real, código limpo e tecnologia que escala.
           </motion.p>

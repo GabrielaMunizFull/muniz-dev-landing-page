@@ -25,16 +25,18 @@ function App() {
       <KonamiEgg />
       <div className="scanlines" />
       <Nav />
-      <Hero />
-      <TechMarquee />
-      <Sobre />
-      <Como />
-      <Projetos />
-      <GithubRepos />
-      <Servicos />
-      <Parceiros />
-      <Faq />
-      <Contato />
+      <main>
+        <Hero />
+        <TechMarquee />
+        <Sobre />
+        <Como />
+        <Projetos />
+        <GithubRepos />
+        <Servicos />
+        <Parceiros />
+        <Faq />
+        <Contato />
+      </main>
       <Footer />
     </AchievementsProvider>
   );
