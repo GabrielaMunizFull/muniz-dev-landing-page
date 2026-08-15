@@ -8,14 +8,15 @@ export function TechMarquee() {
 
   return (
     <div className="tech-strip">
-      <div className="tech-row">
+      <span className="sr-only">{techList.join(', ')}</span>
+      <div className="tech-row" aria-hidden="true">
         <div className="tech-list tech-list-forward">
           {doubled.map((tech, i) => (
             <span key={`f-${tech}-${i}`}>{tech}</span>
           ))}
         </div>
       </div>
-      <div className="tech-row">
+      <div className="tech-row" aria-hidden="true">
         <div className="tech-list tech-list-reverse">
           {doubledReversed.map((tech, i) => (
             <span key={`r-${tech}-${i}`}>{tech}</span>

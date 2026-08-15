@@ -1,6 +1,9 @@
 import { type PointerEvent, useEffect, useRef, useState } from 'react';
-import { AnimatePresence, motion, useMotionTemplate, useMotionValue, useSpring } from 'framer-motion';
-import portrait from '../assets/gabriela-laptop.png';
+import { AnimatePresence, motion, useMotionTemplate, useMotionValue, useReducedMotion, useSpring } from 'framer-motion';
+import portraitPng1x from '../assets/gabriela-laptop.png';
+import portraitPng2x from '../assets/gabriela-laptop@2x.png';
+import portraitWebp1x from '../assets/gabriela-laptop.webp';
+import portraitWebp2x from '../assets/gabriela-laptop@2x.webp';
 import { PixelCorners } from './PixelCorners';
 import { useUnlockAchievement } from '../context/AchievementsContext';
 import { playConfirm } from '../lib/sound';
@@ -25,8 +28,8 @@ const BOOT_STATUSES = [
   'PRONTO.',
 ];
 
-const BOOT_DURATION = 1800;
-const BOOT_AUTO_DISMISS = 3200;
+const BOOT_DURATION = 800;
+const BOOT_AUTO_DISMISS = 500;
 
 function BootOverlay({ onDone }: { onDone: () => void }) {
   const [progress, setProgress] = useState(0);
@@ -108,6 +111,7 @@ function Title() {
 
 function TiltPhotoCard() {
   const ref = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useSpring(useMotionValue(0), { stiffness: 200, damping: 20 });
@@ -116,6 +120,7 @@ function TiltPhotoCard() {
   const glowY = useMotionTemplate`${y}px`;
 
   function handlePointerMove(e: PointerEvent<HTMLDivElement>) {
+    if (reduceMotion) return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -146,7 +151,24 @@ function TiltPhotoCard() {
         className="photo-card-glow"
         style={{ background: useMotionTemplate`radial-gradient(180px circle at ${glowX} ${glowY}, var(--accent-dim), transparent 70%)` }}
       />
-      <img src={portrait} alt="Gabriela Muniz, desenvolvedora full stack" loading="eager" />
+      <picture>
+        <source
+          type="image/webp"
+          srcSet={`${portraitWebp1x} 220w, ${portraitWebp2x} 440w`}
+          sizes="220px"
+        />
+        <img
+          src={portraitPng1x}
+          srcSet={`${portraitPng1x} 220w, ${portraitPng2x} 440w`}
+          sizes="220px"
+          width={220}
+          height={220}
+          alt="Gabriela Muniz, desenvolvedora full stack"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
+      </picture>
       <div className="photo-name">GABRIELA</div>
       <div className="photo-role">Full Stack Developer · Java · React · Node.js</div>
       <div className="stat-row">

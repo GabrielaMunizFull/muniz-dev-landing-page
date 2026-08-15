@@ -5,9 +5,20 @@
   --text-secondary: #a89bc4;
   --text-body: #d8d2ec;
   --accent: #ff5fa8;
+  --accent-light: #ffb6da;
   --accent-dim: rgba(255, 95, 168, 0.15);
   --border: #2a2140;
   --border2: #3a2f52;
+  --bg-deep: #100b1a;
+
+  --success: #2ecc71;
+  --success-bg: #0b1f0f;
+  --error: #e74c3c;
+  --error-bg: #2a0b08;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
 
   --font-display: 'Press Start 2P', monospace;
   --font-body: 'Space Grotesk', sans-serif;
@@ -35,6 +46,22 @@ body {
 
 a, button, [role='button'], input, textarea, select, summary, .menu-link, .faq-summary {
   cursor: pointer;
+}
+
+a:focus-visible,
+button:focus-visible,
+[role='button']:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible,
+.menu-link:focus-visible,
+.faq-summary:focus-visible,
+.github-repo-row:focus-visible,
+.project-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 input, textarea {
@@ -65,6 +92,23 @@ button {
 ::selection {
   background: var(--accent);
   color: var(--bg);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.section-header--center .eyebrow,
+.section-header--center .section-title {
+  text-align: center;
 }
 
 .eyebrow {
@@ -116,9 +160,9 @@ button {
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 var(--accent-dim); }
-  50% { box-shadow: 0 0 0 10px transparent; }
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.35); opacity: 0; }
 }
 
 @keyframes blink {

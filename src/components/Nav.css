@@ -31,7 +31,7 @@
   color: var(--text);
   background: var(--bg-alt);
   border: 1px solid var(--border2);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   padding: 10px 16px;
   transition: border-color 0.2s, color 0.2s;
 }
@@ -64,9 +64,9 @@
   background: none;
   border: 1px solid var(--border2);
   color: var(--text);
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
   font-size: 16px;
   transition: border-color 0.2s, color 0.2s;
 }

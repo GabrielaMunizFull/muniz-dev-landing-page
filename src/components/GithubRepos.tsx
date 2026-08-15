@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Reveal } from './Reveal';
+import { TerminalWindow } from './TerminalWindow';
 import { useUnlockAchievement } from '../context/AchievementsContext';
-import './TerminalWindow.css';
 import './GithubRepos.css';
 
 const GITHUB_USER = 'GabrielaMunizFull';
@@ -55,14 +55,8 @@ export function GithubRepos() {
         <h2 className="section-title">ÚLTIMOS REPOSITÓRIOS</h2>
       </Reveal>
 
-      <div className="terminal-window">
-        <div className="terminal-bar">
-          <span className="terminal-dot dot-red" />
-          <span className="terminal-dot dot-yellow" />
-          <span className="terminal-dot dot-green" />
-          <span className="terminal-title">gh repo list</span>
-        </div>
-        <div className="terminal-body github-body">
+      <TerminalWindow command="gh repo list" fileName="repos.sh">
+        <div className="github-body" aria-live="polite">
           {state.status === 'loading' && (
             <p className="github-status">carregando repositórios...</p>
           )}
@@ -100,7 +94,7 @@ export function GithubRepos() {
               </motion.a>
             ))}
         </div>
-      </div>
+      </TerminalWindow>
     </section>
   );
 }

@@ -37,6 +37,7 @@ export function Faq() {
                 className="faq-summary"
                 onClick={() => toggle(i, isOpen)}
                 aria-expanded={isOpen}
+                aria-controls={`faq-answer-${i}`}
               >
                 {item.question}
                 <motion.span
@@ -50,6 +51,7 @@ export function Faq() {
               <AnimatePresence initial={false}>
                 {isOpen && (
                   <motion.div
+                    id={`faq-answer-${i}`}
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}

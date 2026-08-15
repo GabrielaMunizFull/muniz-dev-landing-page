@@ -9,7 +9,7 @@
 .faq-item {
   background: var(--bg-alt);
   border: 1px solid var(--border2);
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   padding: 4px 24px;
   margin-bottom: 16px;
   overflow: hidden;

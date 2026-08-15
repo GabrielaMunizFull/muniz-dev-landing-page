@@ -15,7 +15,7 @@
   gap: 12px;
   background: var(--bg-alt);
   border: 1px solid var(--accent);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   padding: 12px 18px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-dim);
   max-width: 280px;

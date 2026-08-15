@@ -6,6 +6,7 @@ import { Como } from './components/Como';
 import { Projetos } from './components/Projetos';
 import { GithubRepos } from './components/GithubRepos';
 import { Servicos } from './components/Servicos';
+import { Parceiros } from './components/Parceiros';
 import { Faq } from './components/Faq';
 import { Contato } from './components/Contato';
 import { Footer } from './components/Footer';
@@ -31,6 +32,7 @@ function App() {
       <Projetos />
       <GithubRepos />
       <Servicos />
+      <Parceiros />
       <Faq />
       <Contato />
       <Footer />

@@ -16,7 +16,7 @@
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 28px;
 }
 
@@ -24,7 +24,7 @@
   position: relative;
   background: var(--bg-alt);
   border: 1px solid var(--border2);
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   padding: 28px;
   transition: border-color 0.2s, box-shadow 0.2s;
   overflow: hidden;
@@ -63,7 +63,7 @@
   line-height: 1.5;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 480px) {
   .services-grid {
     grid-template-columns: 1fr;
   }

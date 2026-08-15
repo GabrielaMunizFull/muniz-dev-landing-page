@@ -1,5 +1,5 @@
 import { type KeyboardEvent as ReactKeyboardEvent, useEffect, useRef, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { playBlip, playHover } from '../lib/sound';
 import './Nav.css';
 
@@ -8,11 +8,13 @@ const links = [
   { href: '#projetos', label: 'PROJETOS' },
   { href: '#github', label: 'GITHUB' },
   { href: '#servicos', label: 'SERVIÇOS' },
+  { href: '#parceiros', label: 'PARCEIROS' },
   { href: '#contato', label: 'CONTATO' },
 ];
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const reduceMotion = useReducedMotion();
   const menuBtnRef = useRef<HTMLButtonElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -85,7 +87,7 @@ export function Nav() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: reduceMotion ? 0 : 0.25 }}
             role="dialog"
             aria-modal="true"
             aria-label="Menu de navegação"
@@ -109,9 +111,9 @@ export function Nav() {
                   href={link.href}
                   onClick={() => setOpen(false)}
                   className="menu-link"
-                  initial={{ opacity: 0, x: 40 }}
+                  initial={reduceMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + i * 0.08 }}
+                  transition={{ delay: reduceMotion ? 0 : 0.1 + i * 0.08 }}
                   whileHover={{ x: 12 }}
                 >
                   <span className="menu-cursor">▸</span> {link.label}

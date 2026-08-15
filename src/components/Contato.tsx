@@ -74,9 +74,12 @@ export function Contato() {
         <Reveal delay={0.1}>
           <form onSubmit={handleSubmit}>
             <div className="form-title">NOVA MENSAGEM</div>
-            <input type="text" name="nome" placeholder="Nome" required />
-            <input type="email" name="email" placeholder="E-mail" required />
-            <select name="tipo_projeto" defaultValue="">
+            <label className="sr-only" htmlFor="contato-nome">Nome</label>
+            <input id="contato-nome" type="text" name="nome" placeholder="Nome" required />
+            <label className="sr-only" htmlFor="contato-email">E-mail</label>
+            <input id="contato-email" type="email" name="email" placeholder="E-mail" required />
+            <label className="sr-only" htmlFor="contato-tipo">Tipo de projeto</label>
+            <select id="contato-tipo" name="tipo_projeto" defaultValue="">
               <option value="">Tipo de projeto…</option>
               <option>Site / Landing Page</option>
               <option>Sistema Web</option>
@@ -86,7 +89,8 @@ export function Contato() {
               <option>Consultoria</option>
               <option>Outro</option>
             </select>
-            <textarea name="mensagem" placeholder="Mensagem" rows={4} />
+            <label className="sr-only" htmlFor="contato-mensagem">Mensagem</label>
+            <textarea id="contato-mensagem" name="mensagem" placeholder="Mensagem" rows={4} />
             <motion.button
               type="submit"
               className={`btn btn-primary btn-submit status-${status}`}
@@ -96,6 +100,10 @@ export function Contato() {
             >
               {btnLabel}
             </motion.button>
+            <span role="status" aria-live="polite" className="sr-only">
+              {status === 'success' && 'Mensagem enviada com sucesso.'}
+              {status === 'error' && 'Erro ao enviar mensagem. Tente por e-mail.'}
+            </span>
           </form>
         </Reveal>
       </div>

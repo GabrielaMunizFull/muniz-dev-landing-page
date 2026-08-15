@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useRef, useState, type ReactNode } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import '../components/Achievements.css';
 
 type Toast = { id: string; label: string };
@@ -13,6 +13,7 @@ export function useUnlockAchievement() {
 export function AchievementsProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<Toast[]>([]);
   const unlockedRef = useRef<Set<string>>(new Set());
+  const reduceMotion = useReducedMotion();
 
   const unlock = useCallback((id: string, label: string) => {
     if (unlockedRef.current.has(id)) return;
@@ -26,16 +27,16 @@ export function AchievementsProvider({ children }: { children: ReactNode }) {
   return (
     <AchievementsContext.Provider value={unlock}>
       {children}
-      <div className="achievements-stack">
+      <div className="achievements-stack" role="status" aria-live="polite">
         <AnimatePresence>
           {toasts.map((toast) => (
             <motion.div
               key={toast.id}
               className="achievement-toast"
-              initial={{ opacity: 0, x: 60, scale: 0.9 }}
+              initial={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 60, scale: 0.9 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: 60, scale: 0.9 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+              exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 60, scale: 0.9 }}
+              transition={reduceMotion ? { duration: 0.15 } : { type: 'spring', stiffness: 300, damping: 24 }}
             >
               <span className="achievement-icon">🏆</span>
               <div>

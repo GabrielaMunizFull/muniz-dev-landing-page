@@ -1,4 +1,6 @@
 import itacaVideo from '../assets/itaca-video.mp4';
+import vortemLogo from '../assets/vortem-logo.jpeg';
+import vortemLogoWebp from '../assets/vortem-logo.webp';
 
 export const techList = [
   'JAVASCRIPT', 'TYPESCRIPT', 'REACT', 'NODE.JS', 'JAVA', 'SPRING',
@@ -62,6 +64,15 @@ export const services = [
   { icon: '🗄️', title: 'BANCO DE DADOS', description: 'Modelagem, otimização de queries, migrações e manutenção em bancos relacionais e não-relacionais.' },
   { icon: '📱', title: 'APLICATIVOS MOBILE', description: 'Apps para Android e iOS com foco em performance e experiência do usuário, usando tecnologias modernas.' },
   { icon: '🚀', title: 'CONSULTORIA TÉCNICA', description: 'Análise de projetos, revisão de código, arquitetura de sistemas e suporte técnico especializado.' },
+];
+
+export const partners = [
+  {
+    name: 'VORTEM',
+    logo: vortemLogo,
+    logoWebp: vortemLogoWebp,
+    description: 'A agência Vortem é uma agência de marketing estratégico voltada a desenvolver estratégias para um único fim: solucionar o seu problema e trazer os resultados. É exatamente o que entregamos a cada cliente da Gabriela. Venha ser um cliente Vortem você também! Não vendemos posts, vendemos soluções.',
+  },
 ];
 
 export const faq = [

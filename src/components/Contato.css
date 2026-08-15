@@ -45,7 +45,7 @@
 form {
   background: var(--bg);
   border: 1px solid var(--border2);
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   padding: 32px;
   display: flex;
   flex-direction: column;
@@ -63,7 +63,7 @@ input, select, textarea {
   font-size: 16px;
   background: var(--bg-alt);
   border: 1px solid var(--border2);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   color: var(--text);
   padding: 12px 14px;
   width: 100%;
@@ -90,13 +90,13 @@ textarea {
 }
 
 .btn-submit.status-success {
-  background: #2ecc71;
-  color: #0b1f0f;
+  background: var(--success);
+  color: var(--success-bg);
 }
 
 .btn-submit.status-error {
-  background: #e74c3c;
-  color: #2a0b08;
+  background: var(--error);
+  color: var(--error-bg);
 }
 
 .btn-submit:disabled {

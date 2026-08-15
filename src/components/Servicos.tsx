@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Reveal } from './Reveal';
 import { services } from '../data/content';
 import { useUnlockAchievement } from '../context/AchievementsContext';
@@ -6,12 +6,13 @@ import './Servicos.css';
 
 export function Servicos() {
   const unlock = useUnlockAchievement();
+  const reduceMotion = useReducedMotion();
 
   return (
     <section id="servicos" className="section">
-      <Reveal className="services-header" onEnter={() => unlock('servicos', 'Viu os SERVIÇOS')}>
-        <span className="eyebrow" style={{ textAlign: 'center' }}>O QUE EU FAÇO</span>
-        <h2 className="section-title" style={{ textAlign: 'center' }}>SERVIÇOS QUE ENTREGAM RESULTADO</h2>
+      <Reveal className="services-header section-header--center" onEnter={() => unlock('servicos', 'Viu os SERVIÇOS')}>
+        <span className="eyebrow">O QUE EU FAÇO</span>
+        <h2 className="section-title">SERVIÇOS QUE ENTREGAM RESULTADO</h2>
         <p>Atendo desde projetos do zero até melhorias em sistemas existentes — com atenção ao prazo, ao código e ao usuário final.</p>
       </Reveal>
       <div className="services-grid">
@@ -28,7 +29,7 @@ export function Servicos() {
             <span className="service-card-glow" />
             <motion.div
               className="service-icon"
-              whileHover={{ rotate: [0, -12, 12, -6, 0], scale: 1.15 }}
+              whileHover={reduceMotion ? undefined : { rotate: [0, -12, 12, -6, 0], scale: 1.15 }}
               transition={{ duration: 0.5 }}
             >
               {service.icon}

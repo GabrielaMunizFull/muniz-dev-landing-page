@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { PixelCorners } from './PixelCorners';
 import { playHover } from '../lib/sound';
 import type { projects } from '../data/content';
@@ -10,6 +10,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
   const [flipped, setFlipped] = useState(false);
   const [playing, setPlaying] = useState(false);
   const hasStaticMedia = Boolean(project.embedUrl || project.videoUrl);
+  const reduceMotion = useReducedMotion();
 
   return (
     <motion.div
@@ -21,6 +22,19 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       onHoverStart={hasStaticMedia ? undefined : () => setFlipped(true)}
       onHoverEnd={hasStaticMedia ? undefined : () => setFlipped(false)}
       onTap={hasStaticMedia ? undefined : () => setFlipped((f) => !f)}
+      tabIndex={hasStaticMedia ? undefined : 0}
+      role={hasStaticMedia ? undefined : 'button'}
+      aria-pressed={hasStaticMedia ? undefined : flipped}
+      onKeyDown={
+        hasStaticMedia
+          ? undefined
+          : (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setFlipped((f) => !f);
+              }
+            }
+      }
     >
       <PixelCorners />
 
@@ -58,9 +72,9 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           <motion.div
             className="card-flip-inner"
             animate={{ rotateY: flipped ? 180 : 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: reduceMotion ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="card-face card-face-front">
+            <div className="card-face card-face-front" aria-hidden={flipped}>
               <div className="project-video-wrap">
                 {/* TODO: adicionar poster="capa.jpg" e <source src="video.mp4" type="video/mp4" /> */}
                 <video muted loop playsInline />
@@ -68,10 +82,10 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
               </div>
               <h3>{project.title}</h3>
             </div>
-            <div className="card-face card-face-back">
+            <div className="card-face card-face-back" aria-hidden={!flipped}>
               <h3>{project.title}</h3>
               <p>{project.description}</p>
-              <span className="card-back-hint">◂ passe o mouse pra voltar</span>
+              <span className="card-back-hint">◂ toque ou Enter pra voltar</span>
             </div>
           </motion.div>
         </div>

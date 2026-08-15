@@ -9,9 +9,9 @@ export function Como() {
 
   return (
     <section id="como" className="section">
-      <Reveal onEnter={() => unlock('como', 'Descobriu COMO FUNCIONA')}>
-        <span className="eyebrow" style={{ textAlign: 'center' }}>COMO FUNCIONA</span>
-        <h2 className="section-title" style={{ textAlign: 'center' }}>DO BRIEFING À ENTREGA</h2>
+      <Reveal className="section-header--center" onEnter={() => unlock('como', 'Descobriu COMO FUNCIONA')}>
+        <span className="eyebrow">COMO FUNCIONA</span>
+        <h2 className="section-title">DO BRIEFING À ENTREGA</h2>
       </Reveal>
       <div className="steps-grid">
         <motion.div

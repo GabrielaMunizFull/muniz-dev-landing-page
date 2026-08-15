@@ -30,7 +30,7 @@
   z-index: 1;
   background: var(--bg-alt);
   border: 1px solid var(--border2);
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   padding: 32px 28px;
   transition: border-color 0.2s;
 }

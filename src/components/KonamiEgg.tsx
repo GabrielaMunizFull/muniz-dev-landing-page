@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { playConfirm } from '../lib/sound';
 import './KonamiEgg.css';
 
@@ -13,6 +13,7 @@ const COLORS = ['#ff5fa8', '#7ad9ff', '#ffe066', '#7a3ff2', '#f4f1fb'];
 
 export function KonamiEgg() {
   const [active, setActive] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     let buffer: string[] = [];
@@ -31,7 +32,7 @@ export function KonamiEgg() {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
-  const pixels = active ? Array.from({ length: 60 }) : [];
+  const pixels = active && !reduceMotion ? Array.from({ length: 60 }) : [];
 
   return (
     <AnimatePresence>
