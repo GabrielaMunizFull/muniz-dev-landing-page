@@ -1,5 +1,5 @@
 let ctx: AudioContext | null = null;
-let muted = false;
+let muted = true; // chiptune começa desligado; o HUD religa se o visitante quiser
 
 function getCtx(): AudioContext | null {
   if (typeof window === 'undefined') return null;

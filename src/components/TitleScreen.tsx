@@ -1,13 +1,13 @@
-import { type PointerEvent, useEffect, useRef, useState } from 'react';
-import { AnimatePresence, motion, useMotionTemplate, useMotionValue, useReducedMotion, useSpring } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import portraitPng1x from '../assets/gabriela-laptop.png';
 import portraitPng2x from '../assets/gabriela-laptop@2x.png';
 import portraitWebp1x from '../assets/gabriela-laptop.webp';
 import portraitWebp2x from '../assets/gabriela-laptop@2x.webp';
-import { PixelCorners } from './PixelCorners';
-import { useUnlockAchievement } from '../context/AchievementsContext';
+import { TechMarquee } from './TechMarquee';
+import { whatsappUrl } from '../data/content';
 import { playConfirm } from '../lib/sound';
-import './Hero.css';
+import './TitleScreen.css';
 
 const container = {
   hidden: {},
@@ -28,16 +28,19 @@ const BOOT_STATUSES = [
   'PRONTO.',
 ];
 
-const BOOT_DURATION = 450;
-const BOOT_AUTO_DISMISS = 150;
+const BOOT_DURATION = 420;
+const BOOT_AUTO_DISMISS = 120;
 
 function BootOverlay({ onDone }: { onDone: () => void }) {
   const [progress, setProgress] = useState(0);
   const [done, setDone] = useState(false);
+  const onDoneRef = useRef(onDone);
+  onDoneRef.current = onDone;
 
   useEffect(() => {
     const start = performance.now();
     let raf = 0;
+    let dismiss = 0;
 
     function tick(now: number) {
       const elapsed = now - start;
@@ -47,18 +50,16 @@ function BootOverlay({ onDone }: { onDone: () => void }) {
         raf = requestAnimationFrame(tick);
       } else {
         setDone(true);
+        dismiss = window.setTimeout(() => onDoneRef.current(), BOOT_AUTO_DISMISS);
       }
     }
 
     raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(dismiss);
+    };
   }, []);
-
-  useEffect(() => {
-    if (!done) return;
-    const timeout = setTimeout(onDone, BOOT_AUTO_DISMISS);
-    return () => clearTimeout(timeout);
-  }, [done, onDone]);
 
   const statusIndex = Math.min(BOOT_STATUSES.length - 1, Math.floor(progress / 26));
 
@@ -81,7 +82,7 @@ function BootOverlay({ onDone }: { onDone: () => void }) {
               onDone();
             }}
           >
-            ▸ PRESS START
+<span className="btn-icon" aria-hidden="true" /> PRESS START
           </motion.button>
         )}
       </AnimatePresence>
@@ -101,7 +102,6 @@ function Title() {
             transition={{ duration: 0.7, delay: 0.3 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
           >
             {word}
-            {i < titleWords.length - 1 ? ' ' : ''}
           </motion.span>
         </span>
       ))}
@@ -109,48 +109,15 @@ function Title() {
   );
 }
 
-function TiltPhotoCard() {
-  const ref = useRef<HTMLDivElement>(null);
-  const reduceMotion = useReducedMotion();
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateX = useSpring(useMotionValue(0), { stiffness: 200, damping: 20 });
-  const rotateY = useSpring(useMotionValue(0), { stiffness: 200, damping: 20 });
-  const glowX = useMotionTemplate`${x}px`;
-  const glowY = useMotionTemplate`${y}px`;
-
-  function handlePointerMove(e: PointerEvent<HTMLDivElement>) {
-    if (reduceMotion) return;
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const px = e.clientX - rect.left;
-    const py = e.clientY - rect.top;
-    x.set(px);
-    y.set(py);
-    rotateY.set(((px / rect.width) - 0.5) * 14);
-    rotateX.set(((py / rect.height) - 0.5) * -14);
-  }
-
-  function handlePointerLeave() {
-    rotateX.set(0);
-    rotateY.set(0);
-  }
-
+function PhotoCard() {
   return (
-    <motion.div
-      ref={ref}
-      className="photo-card pixel-frame"
-      variants={item}
-      style={{ rotateX, rotateY, transformPerspective: 800 }}
-      onPointerMove={handlePointerMove}
-      onPointerLeave={handlePointerLeave}
-    >
-      <PixelCorners />
-      <motion.div
-        className="photo-card-glow"
-        style={{ background: useMotionTemplate`radial-gradient(180px circle at ${glowX} ${glowY}, var(--accent-dim), transparent 70%)` }}
-      />
+    <motion.div className="photo-card" variants={item}>
+      <div className="photo-card-head" aria-hidden="true">
+        <span className="photo-card-dot" />
+        <span className="photo-card-dot" />
+        <span className="photo-card-dot" />
+        <span className="photo-card-tag">player-1.png</span>
+      </div>
       <picture>
         <source
           type="image/webp"
@@ -173,21 +140,20 @@ function TiltPhotoCard() {
       <div className="photo-role">Full Stack Developer · Java · React · Node.js</div>
       <div className="stat-row">
         <div>
-          <div className="stat-num">100%</div>
-          <div className="stat-label">FOCO NA ENTREGA</div>
+          <div className="stat-num">6+</div>
+          <div className="stat-label">ANOS DE CÓDIGO</div>
         </div>
         <div>
-          <div className="stat-num">FULL</div>
-          <div className="stat-label">STACK COVERAGE</div>
+          <div className="stat-num">10+</div>
+          <div className="stat-label">PROJETOS NO AR</div>
         </div>
       </div>
     </motion.div>
   );
 }
 
-export function Hero() {
+export function TitleScreen() {
   const [booted, setBooted] = useState(false);
-  const unlock = useUnlockAchievement();
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -195,23 +161,21 @@ export function Hero() {
     }
   }, []);
 
-  function handleBootDone() {
-    setBooted(true);
-    unlock('hero', 'Iniciou o jogo');
-  }
-
   return (
     <motion.section
       className="hero"
+      aria-label="Tela de título"
       variants={container}
       initial="hidden"
       animate="visible"
     >
+      <div className="starfield" aria-hidden="true" />
+
       <AnimatePresence>
-        {!booted && <BootOverlay key="boot" onDone={handleBootDone} />}
+        {!booted && <BootOverlay key="boot" onDone={() => setBooted(true)} />}
       </AnimatePresence>
 
-      {/* display:contents keeps the 2-column grid intact while letting us gate both children behind one `inert` */}
+      {/* display:contents mantém o grid de 2 colunas intacto e ainda deixa gatear os dois filhos com um único `inert` */}
       <div style={{ display: 'contents' }} inert={!booted}>
         <div>
           <motion.div className="hero-badge" variants={item}>
@@ -229,27 +193,24 @@ export function Hero() {
             com foco em entrega real, código limpo e tecnologia que escala.
           </motion.p>
           <motion.div className="hero-actions" variants={item}>
-            <motion.a
-              href="#contato"
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn btn-primary"
-              whileHover={{ scale: 1.06, y: -2 }}
-              whileTap={{ scale: 0.96 }}
             >
-              SOLICITAR PROPOSTA
-            </motion.a>
-            <motion.a
-              href="#projetos"
-              className="btn btn-ghost"
-              whileHover={{ scale: 1.06, y: -2 }}
-              whileTap={{ scale: 0.96 }}
-            >
-              CONHECER MEU TRABALHO
-            </motion.a>
+              COMEÇAR PROJETO <span className="btn-icon" aria-hidden="true" />
+            </a>
+            <a href="#projetos" className="btn btn-ghost">
+              VER TRABALHOS
+            </a>
           </motion.div>
         </div>
 
-        <TiltPhotoCard />
+        <PhotoCard />
       </div>
+
+      <TechMarquee />
     </motion.section>
   );
 }

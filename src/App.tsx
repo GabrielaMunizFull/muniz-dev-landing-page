@@ -1,6 +1,5 @@
-import { Nav } from './components/Nav';
-import { Hero } from './components/Hero';
-import { TechMarquee } from './components/TechMarquee';
+import { Hud } from './components/Hud';
+import { TitleScreen } from './components/TitleScreen';
 import { Sobre } from './components/Sobre';
 import { Como } from './components/Como';
 import { Projetos } from './components/Projetos';
@@ -8,26 +7,21 @@ import { GithubRepos } from './components/GithubRepos';
 import { Servicos } from './components/Servicos';
 import { Parceiros } from './components/Parceiros';
 import { Faq } from './components/Faq';
-import { Contato } from './components/Contato';
+import { InsertCoin } from './components/InsertCoin';
 import { Footer } from './components/Footer';
 import { ScrollProgress } from './components/ScrollProgress';
-import { CursorGlow } from './components/CursorGlow';
-import { SoundToggle } from './components/SoundToggle';
-import { KonamiEgg } from './components/KonamiEgg';
-import { AchievementsProvider } from './context/AchievementsContext';
+import { CrtVignette } from './components/CrtVignette';
 
 function App() {
   return (
-    <AchievementsProvider>
+    <>
       <ScrollProgress />
-      <CursorGlow />
-      <SoundToggle />
-      <KonamiEgg />
-      <div className="scanlines" />
-      <Nav />
-      <main>
-        <Hero />
-        <TechMarquee />
+      <CrtVignette />
+      <div className="cabinet-bezel" aria-hidden="true" />
+      <a className="skip-link" href="#main">Pular para o conteúdo</a>
+      <Hud />
+      <main id="main" tabIndex={-1}>
+        <TitleScreen />
         <Sobre />
         <Como />
         <Projetos />
@@ -35,10 +29,10 @@ function App() {
         <Servicos />
         <Parceiros />
         <Faq />
-        <Contato />
+        <InsertCoin />
       </main>
       <Footer />
-    </AchievementsProvider>
+    </>
   );
 }
 

@@ -1,18 +1,11 @@
 import { motion } from 'framer-motion';
-import { Reveal } from './Reveal';
+import { Stage } from './Stage';
 import { steps } from '../data/content';
-import { useUnlockAchievement } from '../context/AchievementsContext';
 import './Como.css';
 
 export function Como() {
-  const unlock = useUnlockAchievement();
-
   return (
-    <section id="como" className="section">
-      <Reveal className="section-header--center" onEnter={() => unlock('como', 'Descobriu COMO FUNCIONA')}>
-        <span className="eyebrow">COMO FUNCIONA</span>
-        <h2 className="section-title">DO BRIEFING À ENTREGA</h2>
-      </Reveal>
+    <Stage id="fase" kicker="STAGE 2" title="COMO A FASE FUNCIONA">
       <div className="steps-grid">
         <motion.div
           className="steps-line"
@@ -37,6 +30,6 @@ export function Como() {
           </motion.div>
         ))}
       </div>
-    </section>
+    </Stage>
   );
 }

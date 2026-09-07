@@ -6,20 +6,26 @@ Avaliação inicial gratuita em até 24 horas. Orçamento personalizado por esco
 
 ## Docs
 
-- [Sobre](https://gabrielamunizfull.github.io/muniz-dev-landing-page/#sobre): experiência full stack, forte em Java/Spring e ecossistema JavaScript (React, Node.js), aplica SOLID e Clean Code.
-- [Serviços](https://gabrielamunizfull.github.io/muniz-dev-landing-page/#servicos): desenvolvimento frontend, backend, integrações & APIs, banco de dados, apps mobile, consultoria técnica.
-- [Como funciona](https://gabrielamunizfull.github.io/muniz-dev-landing-page/#como): briefing com avaliação gratuita em 24h, desenvolvimento incremental, entrega com deploy e suporte pós-entrega.
+- [Sobre](https://gabrielamunizfull.github.io/muniz-dev-landing-page/#player): experiência full stack, forte em Java/Spring e ecossistema JavaScript (React, Node.js), aplica SOLID e Clean Code.
+- [Serviços](https://gabrielamunizfull.github.io/muniz-dev-landing-page/#arsenal): desenvolvimento frontend, backend, integrações & APIs, banco de dados, apps mobile, consultoria técnica.
+- [Como funciona](https://gabrielamunizfull.github.io/muniz-dev-landing-page/#fase): briefing com avaliação gratuita em 24h, desenvolvimento incremental, entrega com deploy e suporte pós-entrega.
 - [FAQ](https://gabrielamunizfull.github.io/muniz-dev-landing-page/#faq): preço, prazo, tecnologias usadas, atendimento remoto.
 
 ## Projetos
 
+- [Nexus Contabilidade](https://nexuscontabilidadeconsultiva.com/): site institucional e captação de leads para contabilidade consultiva — soluções por perfil de cliente, processo em três etapas, FAQ e formulário de proposta segmentado.
+- [Jennifer Siqueira](https://jennifer-siqueira-landing-page.vercel.app/): landing page editorial para estúdio de tatuagem autoral — portfólio, depoimentos e agendamento de consulta.
+- [Victoria Social Media](https://victoria-social-media-site.vercel.app/): landing page de conversão para social media manager — estratégia, case real, portfólio de vídeos, depoimentos e contato direto.
 - [CUIDARIS](https://cuidaris-web.vercel.app/): SaaS de gestão pra clínicas — agenda semanal com validação de horário, cadastro de pacientes e profissionais, controle financeiro, recibo em PDF.
-- [Videomaker Emily](https://videomakeremily.com/): landing page / portfólio pra social media.
-- [Ítaca](https://github.com/GabrielaMunizFull/itaca): protótipo de app de navegação.
 - [Fechou](https://fechou-one.vercel.app/): plataforma que facilita contratação entre freelancers e clientes.
+- Grão & Ofício: landing page conceito para torrefação artesanal de café — identidade editorial própria, catálogo de microlotes e linha do tempo da torra. Projeto fictício de identidade personalizada.
+- [Ítaca](https://github.com/GabrielaMunizFull/itaca): protótipo de app de navegação.
+- [Videomaker Emily](https://videomakeremily.com/): landing page / portfólio pra social media.
+
+Mais de 10 projetos entregues e no ar. Parte do trabalho é sob NDA e não pode ser listada publicamente — detalhes sob demanda em conversa.
 
 ## Optional
 
 - [GitHub](https://github.com/GabrielaMunizFull): perfil com repositórios públicos.
 - [Parceiros](https://gabrielamunizfull.github.io/muniz-dev-landing-page/#parceiros): agência Vortem, marketing estratégico.
-- [Contato](https://gabrielamunizfull.github.io/muniz-dev-landing-page/#contato): formulário, e-mail, LinkedIn, GitHub, Instagram, WhatsApp.
+- [Contato](https://gabrielamunizfull.github.io/muniz-dev-landing-page/#insert-coin): WhatsApp (canal principal), e-mail, LinkedIn, GitHub, Instagram.

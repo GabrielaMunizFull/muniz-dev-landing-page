@@ -1,44 +1,33 @@
-import { motion, useReducedMotion } from 'framer-motion';
-import { Reveal } from './Reveal';
+import { motion } from 'framer-motion';
+import { Stage } from './Stage';
 import { services } from '../data/content';
-import { useUnlockAchievement } from '../context/AchievementsContext';
 import './Servicos.css';
 
 export function Servicos() {
-  const unlock = useUnlockAchievement();
-  const reduceMotion = useReducedMotion();
-
   return (
-    <section id="servicos" className="section">
-      <Reveal className="services-header section-header--center" onEnter={() => unlock('servicos', 'Viu os SERVIÇOS')}>
-        <span className="eyebrow">O QUE EU FAÇO</span>
-        <h2 className="section-title">SERVIÇOS QUE ENTREGAM RESULTADO</h2>
-        <p>Atendo desde projetos do zero até melhorias em sistemas existentes — com atenção ao prazo, ao código e ao usuário final.</p>
-      </Reveal>
+    <Stage id="arsenal" kicker="STAGE 4" title="ARSENAL">
+      <p className="services-intro">
+        Atendo desde projetos do zero até melhorias em sistemas existentes — com
+        atenção ao prazo, ao código e ao usuário final.
+      </p>
       <div className="services-grid">
         {services.map((service, i) => (
           <motion.div
             key={service.title}
             className="service-card"
-            initial={{ opacity: 0, y: 32 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
-            whileHover={{ y: -8, borderColor: 'var(--accent)' }}
+            transition={{ duration: 0.45, delay: (i % 3) * 0.08 }}
           >
-            <span className="service-card-glow" />
-            <motion.div
-              className="service-icon"
-              whileHover={reduceMotion ? undefined : { rotate: [0, -12, 12, -6, 0], scale: 1.15 }}
-              transition={{ duration: 0.5 }}
-            >
-              {service.icon}
-            </motion.div>
+            <span className="service-idx" aria-hidden="true">
+              {String(i + 1).padStart(2, '0')}
+            </span>
             <h3>{service.title}</h3>
             <p>{service.description}</p>
           </motion.div>
         ))}
       </div>
-    </section>
+    </Stage>
   );
 }

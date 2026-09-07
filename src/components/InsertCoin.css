@@ -1,0 +1,106 @@
+.insert-coin {
+  position: relative;
+  background: var(--bg-deep);
+  border-top: 1px solid var(--border-2);
+  padding: 120px 40px;
+  text-align: center;
+}
+
+.insert-coin > * {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.ic-kicker {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--p1);
+  margin-bottom: 18px;
+}
+
+.ic-kicker::before {
+  content: '▸ ';
+}
+
+.ic-title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 1rem + 4vw, 44px);
+  line-height: 1.2;
+  color: var(--text);
+  text-shadow: 0 0 30px var(--p1-dim);
+  margin-bottom: 24px;
+}
+
+.ic-lede {
+  font-size: 18px;
+  color: var(--text-body);
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.ic-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 1px;
+  line-height: 1;
+  color: var(--bg);
+  background: var(--p1);
+  padding: 22px 40px;
+  border-radius: var(--r-md);
+  box-shadow: 0 3px 0 #8c1361;
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+.ic-cta:hover {
+  color: var(--bg);
+  background: var(--p1-light);
+}
+
+.ic-cta .coin-ico {
+  width: 16px;
+  height: 16px;
+  animation: blink 1.4s step-end infinite;
+}
+
+.ic-credits {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 24px;
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+}
+
+.ic-credits-label {
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  width: 100%;
+}
+
+.ic-credits a {
+  color: var(--text-secondary);
+}
+
+.ic-credits a:hover {
+  color: var(--p2);
+}
+
+@media (max-width: 860px) {
+  .insert-coin {
+    padding: 80px 24px;
+  }
+  .ic-cta {
+    padding: 18px 28px;
+    font-size: 12px;
+  }
+}

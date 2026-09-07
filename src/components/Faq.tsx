@@ -1,14 +1,12 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Reveal } from './Reveal';
+import { Stage } from './Stage';
 import { faq } from '../data/content';
-import { useUnlockAchievement } from '../context/AchievementsContext';
 import { playHover } from '../lib/sound';
 import './Faq.css';
 
 export function Faq() {
   const [open, setOpen] = useState<number | null>(null);
-  const unlock = useUnlockAchievement();
 
   function toggle(i: number, isOpen: boolean) {
     playHover();
@@ -16,11 +14,7 @@ export function Faq() {
   }
 
   return (
-    <section id="faq" className="section">
-      <Reveal onEnter={() => unlock('faq', 'Leu o FAQ')}>
-        <span className="eyebrow">DÚVIDAS FREQUENTES</span>
-        <h2 className="section-title">PERGUNTAS FREQUENTES</h2>
-      </Reveal>
+    <Stage id="faq" kicker="CONTINUE?" title="DÚVIDAS ANTES DO START">
       <div className="faq-list">
         {faq.map((item, i) => {
           const isOpen = open === i;
@@ -66,6 +60,6 @@ export function Faq() {
           );
         })}
       </div>
-    </section>
+    </Stage>
   );
 }

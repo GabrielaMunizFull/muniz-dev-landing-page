@@ -4,8 +4,14 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  background: linear-gradient(90deg, var(--p2), var(--p1));
   transform-origin: 0%;
-  z-index: 200;
-  box-shadow: 0 0 12px var(--accent);
+  z-index: 250;
+  box-shadow: 0 0 12px var(--p2-dim);
+}
+
+@media (min-width: 1080px) {
+  .scroll-progress {
+    left: var(--hud-w);
+  }
 }

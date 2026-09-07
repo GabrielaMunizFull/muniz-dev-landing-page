@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Reveal } from './Reveal';
+import { Stage } from './Stage';
 import { TerminalWindow } from './TerminalWindow';
-import { useUnlockAchievement } from '../context/AchievementsContext';
 import './GithubRepos.css';
 
 const GITHUB_USER = 'GabrielaMunizFull';
@@ -24,12 +23,15 @@ type State =
 
 export function GithubRepos() {
   const [state, setState] = useState<State>({ status: 'loading' });
-  const unlock = useUnlockAchievement();
 
   useEffect(() => {
     let cancelled = false;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
 
-    fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=10`)
+    fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=10`, {
+      signal: controller.signal,
+    })
       .then((res) => {
         if (!res.ok) throw new Error('github api error');
         return res.json() as Promise<Repo[]>;
@@ -41,20 +43,18 @@ export function GithubRepos() {
       })
       .catch(() => {
         if (!cancelled) setState({ status: 'error' });
-      });
+      })
+      .finally(() => clearTimeout(timeout));
 
     return () => {
       cancelled = true;
+      clearTimeout(timeout);
+      controller.abort();
     };
   }, []);
 
   return (
-    <section id="github" className="section">
-      <Reveal onEnter={() => unlock('github', 'Conferiu o GITHUB')}>
-        <span className="eyebrow">CÓDIGO ABERTO</span>
-        <h2 className="section-title">ÚLTIMOS REPOSITÓRIOS</h2>
-      </Reveal>
-
+    <Stage id="repos" kicker="BONUS" title="REPOSITÓRIOS">
       <TerminalWindow command="gh repo list" fileName="repos.sh">
         <div className="github-body" aria-live="polite">
           {state.status === 'loading' && (
@@ -95,6 +95,6 @@ export function GithubRepos() {
             ))}
         </div>
       </TerminalWindow>
-    </section>
+    </Stage>
   );
 }

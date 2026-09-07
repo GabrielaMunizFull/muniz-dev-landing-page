@@ -37,29 +37,39 @@ muniz-dev-landing-page/
 ├── src/
 │   ├── App.tsx
 │   ├── index.css              # tokens de cor, fontes, keyframes globais
-│   ├── assets/                # gabriela-laptop.png
-│   ├── data/content.ts        # stack, steps, services, faq, projects, techList
-│   └── components/            # Nav, Hero, TechMarquee, Sobre, Como, Projetos,
-│                               # Servicos, Faq, Contato, Footer, Reveal
+│   ├── assets/                # foto do hero + projeto-*.webp + itaca-video.mp4
+│   ├── data/content.ts        # stack, steps, services, faq, projects, techList, stages, hudStats, whatsappUrl
+│   ├── hooks/                 # useTypewriter, useActiveStage
+│   └── components/            # Hud, TitleScreen, Stage, TechMarquee, Sobre, Como, Projetos,
+│                               # GithubRepos, Servicos, Parceiros, Faq, InsertCoin, Footer, Reveal, CrtVignette
 └── .github/workflows/deploy.yml   # build + deploy automático (GitHub Pages)
 ```
 
-## ✨ Seções
+## ✨ Seções ("stages")
 
-| Seção | Descrição |
-|---|---|
-| 🏠 Hero | Badge de disponibilidade, título, CTAs, foto |
-| 🧵 Tech marquee | Faixa animada com as tecnologias |
-| 📖 Sobre | Bio + badges de stack técnica |
-| 🛠️ Como | Processo em 3 passos (briefing → dev → entrega) |
-| 🎮 Projetos | Grid 2x2 de vídeos (placeholder — trocar pelos reais) |
-| 🧰 Serviços | 6 cards de serviços oferecidos |
-| ❓ FAQ | Perguntas frequentes (acordeão animado, com rich snippet no Google) |
-| 📬 Contato | Formulário (via [Formspree](https://formspree.io)) + links diretos |
+Rebrand "Arcade Cabinet": HUD fixo (Level Select + placar + INSERT COIN), cada seção é uma stage.
 
-## 🎮 Trocando os vídeos dos projetos
+| Stage | id | Descrição |
+|---|---|---|
+| 🏠 Title Screen | — | Boot "PRESS START", título, CTAs (WhatsApp / ver trabalhos), foto, fita de tecnologias |
+| 📖 STAGE 1 — Quem é o player | `#player` | Bio + badges de stack técnica |
+| 🛠️ STAGE 2 — Como a fase funciona | `#fase` | Processo em 3 passos (briefing → dev → entrega) |
+| 🎮 STAGE 3 — Projetos | `#projetos` | Grid de trabalhos recentes — preview `.webp` por card, vídeo local só no Ítaca |
+| 💾 BONUS — Repositórios | `#repos` | Últimos repositórios da API do GitHub |
+| 🧰 STAGE 4 — Arsenal | `#arsenal` | 6 serviços oferecidos |
+| 🤝 CO-OP — Parceiros | `#parceiros` | Vortem |
+| ❓ CONTINUE? — Dúvidas | `#faq` | FAQ acordeão (rich snippet no Google) |
+| 📬 FINAL BOSS — Insert Coin | `#insert-coin` | CTA direto pro WhatsApp + links (e-mail, LinkedIn, GitHub, Instagram) |
 
-Edite `src/data/content.ts` (array `projects`) para os textos, e `src/components/ProjectCard.tsx` para adicionar `<source src="..." type="video/mp4" />` e `poster="..."` reais em cada `<video>`.
+## 🎮 Adicionando / trocando projetos
+
+Cada item do array `projects` em `src/data/content.ts` segue a `interface Project`:
+
+- `image` + `imageAlt` — preview `.webp` (importado de `src/assets/projeto-<slug>.webp`, ~16:9). É o caso padrão.
+- `videoUrl` — mp4 local importado de `src/assets/`. Tem prioridade sobre `image` e mostra botão de play (só o Ítaca usa hoje).
+- Sem `image` nem `videoUrl` → o card mostra o placeholder `EM BREVE`.
+
+Para gerar um preview novo: tire um screenshot do site em ~1440px de largura e rode um `sharp(...).resize(1000, 563, { fit: 'cover', position: 'top' }).webp({ quality: 80 })` (mesmo padrão de `scripts/optimize-hero-image.mjs`). Ao incluir/remover projetos, sincronize também `public/llms.txt` e `public/llms-full.txt`.
 
 ## 🚀 Rodando localmente
 
@@ -85,7 +95,7 @@ Push na branch `main` dispara `.github/workflows/deploy.yml`, que builda com Vit
 
 - Meta tags completas (Open Graph, Twitter Card, description, keywords)
 - `sitemap.xml` + `robots.txt`
-- Dados estruturados `schema.org` (`Person` + `FAQPage`)
+- Dados estruturados `schema.org` (`Person` + `FAQPage` + `ProfessionalService`)
 - Verificado no Google Search Console
 
 ## 📬 Contato

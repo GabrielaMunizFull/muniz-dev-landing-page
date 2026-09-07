@@ -1,0 +1,6 @@
+/* o layout base de .stage / .stage-num / .stage-kicker / .stage-title vive em index.css */
+
+.stage-kicker::before {
+  content: '▸';
+  color: var(--p1);
+}

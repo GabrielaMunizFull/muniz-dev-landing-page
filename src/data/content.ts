@@ -1,10 +1,40 @@
 import itacaVideo from '../assets/itaca-video.mp4';
 import vortemLogo from '../assets/vortem-logo.jpeg';
 import vortemLogoWebp from '../assets/vortem-logo.webp';
+import projetoNexus from '../assets/projeto-nexus.webp';
+import projetoJennifer from '../assets/projeto-jennifer.webp';
+import projetoVictoria from '../assets/projeto-victoria.webp';
+import projetoCuidaris from '../assets/projeto-cuidaris.webp';
+import projetoEmily from '../assets/projeto-emily.webp';
+import projetoFechou from '../assets/projeto-fechou.webp';
+import projetoGrao from '../assets/projeto-grao.webp';
 
 export const techList = [
   'JAVASCRIPT', 'TYPESCRIPT', 'REACT', 'NODE.JS', 'JAVA', 'SPRING',
   'PYTHON', 'SQL', 'POSTGRESQL', 'REST APIS', 'GIT', 'DOCKER', 'HTML/CSS',
+];
+
+/** WhatsApp com mensagem pré-preenchida — ação principal do site. */
+export const whatsappUrl =
+  'https://wa.me/558194561507?text=Oi%20Gabriela!%20Vim%20pelo%20site%20e%20quero%20falar%20sobre%20um%20projeto.';
+
+/** Placar de credibilidade exibido no HUD. */
+export const hudStats = [
+  { label: 'XP', value: '6+ ANOS' },
+  { label: 'SHIPPED', value: '10+ PROJETOS' },
+  { label: 'STACK', value: 'FULL' },
+];
+
+/** Manifesto de navegação — cada seção é uma "stage". `id` casa com o id da <section>. */
+export const stages = [
+  { id: 'player', kicker: 'STAGE 1', title: 'QUEM É O PLAYER' },
+  { id: 'fase', kicker: 'STAGE 2', title: 'COMO A FASE FUNCIONA' },
+  { id: 'projetos', kicker: 'STAGE 3', title: 'PROJETOS' },
+  { id: 'arsenal', kicker: 'STAGE 4', title: 'ARSENAL' },
+  { id: 'repos', kicker: 'BONUS', title: 'REPOSITÓRIOS' },
+  { id: 'parceiros', kicker: 'CO-OP', title: 'PARCEIROS' },
+  { id: 'faq', kicker: 'CONTINUE?', title: 'DÚVIDAS ANTES DO START' },
+  { id: 'insert-coin', kicker: 'FINAL BOSS', title: 'INSERT COIN' },
 ];
 
 export const stack = [
@@ -29,21 +59,82 @@ export const steps = [
   },
 ];
 
-// TODO: substituir os slots restantes por vídeos/imagens e textos reais.
-export const projects = [
+export interface Project {
+  id: number;
+  title: string;
+  description: string;
+  /** Link pro site no ar ou repositório. Omitido em projetos conceito/fictícios. */
+  siteUrl?: string;
+  /** Imagem de preview (webp). Usada quando não há videoUrl. */
+  image?: string;
+  imageAlt?: string;
+  /** Vídeo local mp4. Tem prioridade sobre image e mostra botão de play. */
+  videoUrl?: string;
+  /** Techs "equipadas" no projeto — chips EQUIPPED no card. */
+  stack?: string[];
+  /** Uma linha de "resultado" — o veredito do card. */
+  verdict?: string;
+}
+
+export const projects: Project[] = [
+  {
+    id: 5,
+    title: 'NEXUS CONTABILIDADE',
+    description: 'Site institucional e captação de leads para contabilidade consultiva: soluções por perfil de cliente, processo em três etapas, FAQ e formulário de proposta segmentado. Domínio próprio.',
+    image: projetoNexus,
+    imageAlt: 'Página inicial do site da Nexus Contabilidade Consultiva',
+    siteUrl: 'https://nexuscontabilidadeconsultiva.com/',
+    stack: ['REACT', 'TYPESCRIPT', 'LANDING PAGE', 'SEO'],
+    verdict: 'No ar em domínio próprio, captando leads.',
+  },
+  {
+    id: 6,
+    title: 'JENNIFER SIQUEIRA',
+    description: 'Landing page editorial para estúdio de tatuagem autoral: portfólio, depoimentos e agendamento de consulta, com tipografia serifada e paleta calma.',
+    image: projetoJennifer,
+    imageAlt: 'Página inicial do site do estúdio de tatuagem Jennifer Siqueira',
+    siteUrl: 'https://jennifer-siqueira-landing-page.vercel.app/',
+    stack: ['REACT', 'TYPESCRIPT', 'LANDING PAGE', 'UI EDITORIAL'],
+    verdict: 'No ar, recebendo agendamentos.',
+  },
+  {
+    id: 7,
+    title: 'VICTORIA SOCIAL MEDIA',
+    description: 'Landing page de conversão para social media manager: estratégia, case real, portfólio de vídeos, depoimentos e contato direto.',
+    image: projetoVictoria,
+    imageAlt: 'Página inicial do site da social media Victoria (@viicksocialmedia)',
+    siteUrl: 'https://victoria-social-media-site.vercel.app/',
+    stack: ['REACT', 'TYPESCRIPT', 'LANDING PAGE', 'CONVERSÃO'],
+    verdict: 'No ar, pronta pra converter.',
+  },
   {
     id: 1,
     title: 'CUIDARIS',
     description: 'SaaS de gestão pra clínicas: agenda semanal com validação de horário, cadastro de pacientes e profissionais, controle financeiro e emissão de recibo em PDF.',
-    embedUrl: 'https://www.loom.com/embed/6fb8ec3ee9224025bf434c684d7037e6',
+    image: projetoCuidaris,
+    imageAlt: 'Página inicial do SaaS Cuidaris',
     siteUrl: 'https://cuidaris-web.vercel.app/',
+    stack: ['REACT', 'NODE.JS', 'POSTGRESQL', 'SAAS', 'PDF'],
+    verdict: 'SaaS completo, clínicas usando no dia a dia.',
   },
   {
-    id: 2,
-    title: 'VIDEOMAKER EMILY',
-    description: 'Landing page / portfólio para social media, criado para videomakeremily.com.',
-    embedUrl: 'https://www.loom.com/embed/2469a30a0e0e45a5b0c2bb1878dcfcf1',
-    siteUrl: 'https://videomakeremily.com/',
+    id: 4,
+    title: 'FECHOU',
+    description: 'Plataforma que facilita a contratação entre freelancers e clientes, do briefing à proposta em PDF.',
+    image: projetoFechou,
+    imageAlt: 'Página inicial da plataforma Fechou',
+    siteUrl: 'https://fechou-one.vercel.app/',
+    stack: ['REACT', 'NODE.JS', 'SAAS', 'PDF', 'PIX'],
+    verdict: 'Plataforma no ar, do briefing ao pagamento.',
+  },
+  {
+    id: 8,
+    title: 'GRÃO & OFÍCIO',
+    description: 'Landing page conceito para torrefação artesanal de café: identidade editorial própria, catálogo de microlotes, linha do tempo da torra e pontos de venda. Projeto fictício de identidade personalizada.',
+    image: projetoGrao,
+    imageAlt: 'Página inicial do site conceito Grão & Ofício, torrefação artesanal',
+    stack: ['HTML', 'CSS', 'IDENTIDADE VISUAL', 'CONCEITO'],
+    verdict: 'Peça de identidade — projeto fictício.',
   },
   {
     id: 3,
@@ -51,13 +142,18 @@ export const projects = [
     description: 'Protótipo de app de navegação — o app que Odisseu usaria pra voltar pra casa.',
     videoUrl: itacaVideo,
     siteUrl: 'https://github.com/GabrielaMunizFull/itaca',
+    stack: ['PROTÓTIPO', 'MOBILE', 'UI/UX'],
+    verdict: 'Protótipo fechado, código no GitHub.',
   },
   {
-    id: 4,
-    title: 'FECHOU',
-    description: 'Plataforma que facilita a contratação entre freelancers e clientes.',
-    embedUrl: 'https://www.loom.com/embed/381aad69c19346fdb43ebd00a9005e7a',
-    siteUrl: 'https://fechou-one.vercel.app/',
+    id: 2,
+    title: 'VIDEOMAKER EMILY',
+    description: 'Landing page / portfólio para social media, criado para videomakeremily.com.',
+    image: projetoEmily,
+    imageAlt: 'Página inicial do site Videomaker Emily',
+    stack: ['REACT', 'LANDING PAGE', 'PORTFÓLIO'],
+    verdict: 'No ar em videomakeremily.com.',
+    siteUrl: 'https://videomakeremily.com/',
   },
 ];
 

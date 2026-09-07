@@ -1,18 +1,11 @@
 import { motion } from 'framer-motion';
-import { Reveal } from './Reveal';
+import { Stage } from './Stage';
 import { partners } from '../data/content';
-import { useUnlockAchievement } from '../context/AchievementsContext';
 import './Parceiros.css';
 
 export function Parceiros() {
-  const unlock = useUnlockAchievement();
-
   return (
-    <section id="parceiros" className="section">
-      <Reveal className="partners-header section-header--center" onEnter={() => unlock('parceiros', 'Viu os PARCEIROS')}>
-        <span className="eyebrow">QUEM CAMINHA JUNTO</span>
-        <h2 className="section-title">PARCEIROS</h2>
-      </Reveal>
+    <Stage id="parceiros" kicker="CO-OP" title="PARCEIROS">
       <div className="partners-grid">
         {partners.map((partner, i) => (
           <motion.div
@@ -47,7 +40,7 @@ export function Parceiros() {
         ))}
         {/* CTA "SEJA UM PARCEIRO" oculto por hora — reativar quando pedido
         <motion.a
-          href="#contato"
+          href="#insert-coin"
           className="partner-card partner-cta"
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -62,6 +55,6 @@ export function Parceiros() {
         </motion.a>
         */}
       </div>
-    </section>
+    </Stage>
   );
 }

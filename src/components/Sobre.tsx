@@ -1,20 +1,12 @@
 import { motion } from 'framer-motion';
-import { Reveal } from './Reveal';
+import { Stage } from './Stage';
 import { TerminalWindow } from './TerminalWindow';
 import { stack } from '../data/content';
-import { useUnlockAchievement } from '../context/AchievementsContext';
 import './Sobre.css';
 
 export function Sobre() {
-  const unlock = useUnlockAchievement();
-
   return (
-    <section id="sobre" className="section">
-      <Reveal onEnter={() => unlock('sobre', 'Explorou SOBRE')}>
-        <span className="eyebrow">SOBRE MIM</span>
-        <h2 className="section-title">DEV QUE DOMINA TODA A STACK</h2>
-      </Reveal>
-
+    <Stage id="player" kicker="STAGE 1" title="QUEM É O PLAYER">
       <TerminalWindow command="cat sobre.md" fileName="sobre.md">
         <p>
           Sou desenvolvedora full stack com experiência em <strong>frontend, backend,
@@ -46,6 +38,6 @@ export function Sobre() {
           ))}
         </div>
       </TerminalWindow>
-    </section>
+    </Stage>
   );
 }

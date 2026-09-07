@@ -26,15 +26,21 @@ Tecnologias: JavaScript, TypeScript, React, Node.js, Java, Spring, Python, SQL, 
 
 ## Projetos
 
+- **Nexus Contabilidade** ([site](https://nexuscontabilidadeconsultiva.com/)): site institucional e captação de leads para contabilidade consultiva. Seções de soluções por perfil de cliente (prestadores de serviço, saúde, empresas em crescimento, traders, residentes no exterior, MEI), processo consultivo em três etapas, FAQ e formulário de proposta segmentado por perfil. Domínio próprio.
+- **Jennifer Siqueira** ([site](https://jennifer-siqueira-landing-page.vercel.app/)): landing page editorial para estúdio de tatuagem autoral em Paulista/PE. Portfólio, depoimentos e agendamento de consulta, com tipografia serifada e paleta calma.
+- **Victoria Social Media** ([site](https://victoria-social-media-site.vercel.app/)): landing page de conversão para social media manager (@viicksocialmedia). Estratégia, case real, portfólio de vídeos, depoimentos e formulário de contato direto.
 - **CUIDARIS** ([site](https://cuidaris-web.vercel.app/)): SaaS de gestão pra clínicas. Agenda semanal com validação de horário e atualização de status (confirmado, pendente, cancelado, remarcado). Cadastro de pacientes e de profissionais de saúde (com limites por plano). Controle financeiro com status de pagamento e resumo mensal. Emissão de recibo em PDF.
-- **Videomaker Emily** ([site](https://videomakeremily.com/)): landing page / portfólio para social media, criado para videomakeremily.com.
+- **Fechou** ([site](https://fechou-one.vercel.app/)): plataforma que facilita a contratação entre freelancers e clientes, do briefing à proposta em PDF.
+- **Grão & Ofício**: landing page conceito para uma torrefação artesanal de café. Identidade editorial própria (tipografia serifada Fraunces, paleta papel/âmbar/cereja), catálogo de microlotes com notas de degustação, linha do tempo da torra em quatro etapas e pontos de venda. Projeto fictício, criado como exemplo de identidade personalizada.
 - **Ítaca** ([repositório](https://github.com/GabrielaMunizFull/itaca)): protótipo de app de navegação.
-- **Fechou** ([site](https://fechou-one.vercel.app/)): plataforma que facilita a contratação entre freelancers e clientes.
+- **Videomaker Emily** ([site](https://videomakeremily.com/)): landing page / portfólio para social media, criado para videomakeremily.com.
+
+Mais de 10 projetos entregues e no ar no total. Parte do portfólio é sob NDA e não pode ser divulgada publicamente; detalhes sob demanda em conversa direta.
 
 ## FAQ
 
 **Quanto custa contratar uma desenvolvedora freelancer full stack?**
-O valor varia conforme escopo, prazo e complexidade do projeto. Avaliação inicial gratuita em até 24 horas via formulário de contato.
+O valor varia conforme escopo, prazo e complexidade do projeto. Avaliação inicial gratuita em até 24 horas — o contato principal é pelo WhatsApp.
 
 **Quanto tempo leva para desenvolver um projeto?**
 Depende do tamanho: uma landing page pode ficar pronta em poucos dias; sistemas web completos ou integrações levam algumas semanas. Prazo definido junto com o cliente antes de começar.
