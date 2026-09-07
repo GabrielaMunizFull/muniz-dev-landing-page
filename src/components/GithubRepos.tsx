@@ -26,28 +26,52 @@ export function GithubRepos() {
 
   useEffect(() => {
     let cancelled = false;
+    let started = false;
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 8000);
+    let timeout = 0;
 
-    fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=10`, {
-      signal: controller.signal,
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error('github api error');
-        return res.json() as Promise<Repo[]>;
+    function load() {
+      if (started) return;
+      started = true;
+      timeout = window.setTimeout(() => controller.abort(), 8000);
+      fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=10`, {
+        signal: controller.signal,
       })
-      .then((data) => {
-        if (cancelled) return;
-        const repos = data.filter((r) => !r.fork).slice(0, 6);
-        setState({ status: 'ready', repos });
-      })
-      .catch(() => {
-        if (!cancelled) setState({ status: 'error' });
-      })
-      .finally(() => clearTimeout(timeout));
+        .then((res) => {
+          if (!res.ok) throw new Error('github api error');
+          return res.json() as Promise<Repo[]>;
+        })
+        .then((data) => {
+          if (cancelled) return;
+          const repos = data.filter((r) => !r.fork).slice(0, 6);
+          setState({ status: 'ready', repos });
+        })
+        .catch(() => {
+          if (!cancelled) setState({ status: 'error' });
+        })
+        .finally(() => clearTimeout(timeout));
+    }
+
+    // só busca quando a seção está perto da viewport (tira do caminho crítico do load)
+    const el = document.getElementById('repos');
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      load();
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          load();
+          io.disconnect();
+        }
+      },
+      { rootMargin: '600px 0px' },
+    );
+    io.observe(el);
 
     return () => {
       cancelled = true;
+      io.disconnect();
       clearTimeout(timeout);
       controller.abort();
     };

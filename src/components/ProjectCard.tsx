@@ -39,8 +39,8 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
             <img
               src={project.image}
               alt={project.imageAlt ?? `Preview do projeto ${project.title}`}
-              width={1000}
-              height={563}
+              width={720}
+              height={405}
               loading="lazy"
               decoding="async"
             />
