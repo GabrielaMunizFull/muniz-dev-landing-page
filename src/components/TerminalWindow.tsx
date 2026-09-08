@@ -1,7 +1,6 @@
-import { useRef } from 'react';
-import { useInView } from 'framer-motion';
-import type { ReactNode } from 'react';
+import { useRef, type ReactNode } from 'react';
 import { useTypewriter } from '../hooks/useTypewriter';
+import { useInViewOnce } from '../hooks/useInViewOnce';
 import './TerminalWindow.css';
 
 export function TerminalWindow({
@@ -14,7 +13,7 @@ export function TerminalWindow({
   children: ReactNode;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-100px' });
+  const inView = useInViewOnce(ref, '0px 0px -100px 0px');
   const typed = useTypewriter(command, 32, inView);
   const done = typed.length === command.length;
 

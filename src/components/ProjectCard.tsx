@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { type CSSProperties, useState } from 'react';
 import { PixelCorners } from './PixelCorners';
 import { playHover } from '../lib/sound';
 import type { Project } from '../data/content';
@@ -8,13 +7,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
   const [playing, setPlaying] = useState(false);
 
   return (
-    <motion.div
-      className="project-card pixel-frame"
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-    >
+    <div className="project-card pixel-frame rise" style={{ '--i': index % 3 } as CSSProperties}>
       <PixelCorners />
 
       <div className="card-static">
@@ -81,6 +74,6 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           </a>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 }

@@ -27,6 +27,11 @@
   padding: 14px 0;
   border-bottom: 1px solid var(--border);
   font-family: var(--font-body);
+  transition: translate 0.15s ease;
+}
+
+.github-repo-row:hover {
+  translate: 6px 0;
 }
 
 .github-repo-row:last-child {

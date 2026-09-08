@@ -4,7 +4,6 @@ import {
   useRef,
   useState,
 } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { hudStats, stages, whatsappUrl } from '../data/content';
 import { setMuted } from '../lib/sound';
 import { useActiveStage } from '../hooks/useActiveStage';
@@ -16,7 +15,6 @@ const stageIds = stages.map((s) => s.id);
 export function Hud() {
   const [open, setOpen] = useState(false);
   const [muted, setMutedState] = useState(true);
-  const reduceMotion = useReducedMotion();
   const activeId = useActiveStage(stageIds);
 
   const panelRef = useRef<HTMLDivElement>(null);
@@ -94,6 +92,7 @@ export function Hud() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="hud-panel"
+          aria-label="Selecionar seção"
         >
           <span className="bars-ico" aria-hidden="true" />
           <span className="hud-open-label">LEVEL&nbsp;SELECT</span>
@@ -114,6 +113,7 @@ export function Hud() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Falar no WhatsApp"
           >
             <span className="coin-ico" aria-hidden="true" />
             <span className="hud-coin-label">INSERT&nbsp;COIN</span>
@@ -121,16 +121,11 @@ export function Hud() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
+      {open && (
+          <div
             ref={panelRef}
             id="hud-panel"
             className="hud-panel"
-            initial={{ opacity: 0, x: reduceMotion ? 0 : -12 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: reduceMotion ? 0 : -12 }}
-            transition={{ duration: reduceMotion ? 0 : 0.2 }}
             onKeyDown={trapFocus}
           >
             <button
@@ -166,9 +161,8 @@ export function Hud() {
                 </div>
               ))}
             </dl>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
     </header>
   );
 }

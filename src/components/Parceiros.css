@@ -12,6 +12,12 @@
   border-radius: var(--r-sm);
   padding: var(--sp-6);
   overflow: hidden;
+  transition: border-color 0.2s, translate 0.2s;
+}
+
+.partner-card:hover {
+  border-color: var(--p1);
+  translate: 0 -6px;
 }
 
 .partner-card-glow {

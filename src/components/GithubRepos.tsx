@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 import { Stage } from './Stage';
 import { TerminalWindow } from './TerminalWindow';
 import './GithubRepos.css';
@@ -96,18 +95,13 @@ export function GithubRepos() {
             <p className="github-status">nenhum repositório público encontrado.</p>
           )}
           {state.status === 'ready' &&
-            state.repos.map((repo, i) => (
-              <motion.a
+            state.repos.map((repo) => (
+              <a
                 key={repo.id}
                 href={repo.html_url}
                 target="_blank"
                 rel="noopener"
                 className="github-repo-row"
-                initial={{ opacity: 0, x: -16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.06 }}
-                whileHover={{ x: 6 }}
               >
                 <span className="github-repo-name">{repo.name}</span>
                 {repo.description && <span className="github-repo-desc">{repo.description}</span>}
@@ -115,7 +109,7 @@ export function GithubRepos() {
                   {repo.language && <span className="github-repo-lang">{repo.language}</span>}
                   <span className="github-repo-stars">★ {repo.stargazers_count}</span>
                 </span>
-              </motion.a>
+              </a>
             ))}
         </div>
       </TerminalWindow>

@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Reveal } from './Reveal';
 import { contactLinks, whatsappUrl } from '../data/content';
 import './InsertCoin.css';
@@ -16,17 +15,15 @@ export function InsertCoin() {
           em até 24 horas com uma avaliação inicial gratuita.
         </p>
 
-        <motion.a
+        <a
           className="ic-cta"
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          whileHover={{ scale: 1.04, y: -2 }}
-          whileTap={{ scale: 0.97 }}
         >
           <span className="coin-ico" aria-hidden="true" />
           FALAR NO WHATSAPP
-        </motion.a>
+        </a>
 
         <div className="ic-credits">
           <span className="ic-credits-label">OU POR AQUI</span>

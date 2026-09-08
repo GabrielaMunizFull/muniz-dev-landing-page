@@ -35,10 +35,28 @@
   color: var(--accent);
   font-size: 20px;
   flex-shrink: 0;
+  transition: rotate 0.2s ease, color 0.2s ease;
 }
 
+.faq-item.is-open .faq-marker {
+  rotate: 45deg;
+  color: var(--p2);
+}
+
+/* colapso animado sem JS: grid-rows 0fr -> 1fr */
 .faq-answer-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
+}
+
+.faq-item.is-open .faq-answer-wrap {
+  grid-template-rows: 1fr;
+}
+
+.faq-answer-wrap > .faq-answer {
   overflow: hidden;
+  min-height: 0;
 }
 
 .faq-answer {
@@ -46,4 +64,8 @@
   color: var(--text-secondary);
   line-height: 1.6;
   padding-bottom: 20px;
+}
+
+.faq-item:not(.is-open) .faq-answer {
+  padding-bottom: 0;
 }

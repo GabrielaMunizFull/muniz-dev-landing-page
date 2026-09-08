@@ -28,4 +28,10 @@
   border-radius: 6px;
   border: 1px solid var(--border2);
   display: inline-block;
+  transition: border-color 0.15s, scale 0.15s;
+}
+
+.skill-badge:hover {
+  border-color: var(--accent);
+  scale: 1.06;
 }

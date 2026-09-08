@@ -178,7 +178,7 @@ export const partners = [
 export const faq = [
   {
     question: 'QUANTO CUSTA CONTRATAR UMA DESENVOLVEDORA FREELANCER FULL STACK?',
-    answer: 'O valor varia conforme escopo, prazo e complexidade do projeto. Envie os detalhes pelo formulário de contato e eu retorno com uma avaliação inicial gratuita em até 24 horas.',
+    answer: 'O valor varia conforme escopo, prazo e complexidade do projeto. Me chama no WhatsApp com os detalhes e eu retorno com uma avaliação inicial gratuita em até 24 horas.',
   },
   {
     question: 'QUANTO TEMPO LEVA PARA DESENVOLVER UM PROJETO?',

@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Stage } from './Stage';
 import { TerminalWindow } from './TerminalWindow';
 import { stack } from '../data/content';
@@ -24,17 +23,10 @@ export function Sobre() {
           Aplico SOLID, Clean Code e boas práticas em cada projeto.
         </p>
         <div className="badge-row">
-          {stack.map((skill, i) => (
-            <motion.span
-              key={skill}
-              className="skill-badge"
-              whileHover={{ scale: 1.08, borderColor: 'var(--accent)' }}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.06 }}
-            >
+          {stack.map((skill) => (
+            <span key={skill} className="skill-badge">
               {skill}
-            </motion.span>
+            </span>
           ))}
         </div>
       </TerminalWindow>
